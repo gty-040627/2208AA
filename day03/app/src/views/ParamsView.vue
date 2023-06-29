@@ -1,7 +1,6 @@
 <template>
   <div>
-    <router-view></router-view>
-    <button @click="gotochildren">点击进入children</button>
+    paramsview
  </div>
 </template>
 
@@ -13,12 +12,10 @@ export default {
     }
   },
   methods: {
-    gotochildren(){
-      this.$router.push({path:"about/ Children"})
-    }
+
   },
   created () {
-
+    console.log(this.$route.params.id);
   },
   mounted () {
 
@@ -37,4 +34,3 @@ export default {
 
 <style lang='scss' scoped>
 </style>
-

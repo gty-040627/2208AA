@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ChildrenView >
+    <ChildrenView>
       <!-- 匿名插槽 -->
       <p>我是匿名插槽</p>
       <!-- 具名插槽 -->
@@ -14,6 +14,15 @@
         </ul>
       </template> -->
     </ChildrenView>
+
+    
+
+    <button @click="gotoQuery">使用query传参</button>
+    <button @click="gotoParams">使用params传参</button>
+
+
+   
+
   </div>
 </template>
 
@@ -26,7 +35,13 @@ export default {
     }
   },
   methods: {
-
+    gotoQuery() {
+      this.$router.push({ path: 'QueryView', query: { id: 9999 } })
+    },
+    gotoParams() {
+      this.$router.push({ name: 'ParamsView', params: { id: 8888 } })
+    },
+    
   },
   created() {
 

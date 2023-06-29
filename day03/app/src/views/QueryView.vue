@@ -1,7 +1,6 @@
 <template>
   <div>
-    <router-view></router-view>
-    <button @click="gotochildren">点击进入children</button>
+    queryview
  </div>
 </template>
 
@@ -13,12 +12,11 @@ export default {
     }
   },
   methods: {
-    gotochildren(){
-      this.$router.push({path:"about/ Children"})
-    }
+
   },
   created () {
-
+    console.log(this.$route.query.id);
+   
   },
   mounted () {
 
@@ -37,4 +35,3 @@ export default {
 
 <style lang='scss' scoped>
 </style>
-
