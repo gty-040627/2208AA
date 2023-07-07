@@ -6,6 +6,8 @@ const Mock = require('mockjs')
 const loginData = require('./common/login.json')
 //3.1 引入新增部门
 const addPrever = require('./common/addPrever.json')
+//员工接口
+const useRList = require('./common/useRList.json')
 //4. 实例化express
 const app = express()
 
@@ -29,6 +31,17 @@ app.use('/company/department', function (req, res) {
       status: 200,
       msg: '登录成功',
       data: addPrever
+    })
+  )
+})
+
+//员工接口
+app.use('/sys/role', function (req, res) {
+  res.json(
+    Mock.mock({
+      status: 200,
+      msg: '登录成功',
+      data: useRList
     })
   )
 })

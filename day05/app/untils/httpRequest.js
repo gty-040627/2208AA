@@ -6,7 +6,7 @@ import router from '@/router'
 import { MessageBox } from 'element-ui'
 
 const http = axios.create({
-  // baseURL: '/',
+  baseURL: '/',
   timeout: 1000 * 30,
   withCredentials: true,
   headers: {
@@ -19,7 +19,7 @@ const http = axios.create({
  */
 http.interceptors.request.use(
   (config) => {
-    config.headers['Authorization'] = `Bearer` + getToken() // 请求头带上token
+    config.headers['Authorization'] = `Bearer ${getToken()}` // 请求头带上token
     return config
   },
   (error) => {

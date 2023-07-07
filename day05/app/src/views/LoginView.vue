@@ -64,9 +64,9 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           Querylogin(this.ruleForm).then((res) => {
-            console.log(res, 'res')
+            // console.log(res, 'res')
             const { code, data, message } = res
-            if (code === 200) {
+            if (code === 10000) {
               //储存
               setToken(data)
               //提示登陆成功
@@ -75,11 +75,11 @@ export default {
                 message,
                 duration: TS
               })
+              this.$router.push('/')
             } else {
               this.$message.success(message)
             }
           })
-          this.$router.push('/')
         } else {
           console.log('error submit!!')
           return false
