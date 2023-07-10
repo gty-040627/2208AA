@@ -36,8 +36,8 @@
         <div class="ZhongRight">
           <div class="RightTop">
             <p>流程申请</p>
-            <span @click="OpenAddWord">加班离职</span>
-            <span @click="HandleLeave">请假调休</span>
+            <span @click="HandleAddWord">加班离职</span>
+            <span @click="HandleLeaveOff">请假调休</span>
             <span>审批列表</span>
             <br />
             <span>我的信息</span>
@@ -91,113 +91,25 @@
           </div>
         </div>
       </div>
-
-      <!-- 加班离职弹出框 -->
-      <el-dialog title="申请" :visible.sync="dialogVisible" width="40%">
-        <el-form ref="form" :model="sizeForm" label-width="120px">
-          <el-form-item label="申请类型">
-            <el-select v-model="sizeForm.region">
-              <el-option label="加班" value="0"></el-option>
-              <el-option label="离职" value="1"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="加班开始时间">
-            <el-col :span="11">
-              <el-date-picker
-                type="date"
-                placeholder="选择日期"
-                v-model="sizeForm.date1"
-                style="width: 100%"
-              ></el-date-picker>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="加班结束时间">
-            <el-col :span="11">
-              <el-date-picker
-                type="date"
-                placeholder="选择日期"
-                v-model="sizeForm.date1"
-                style="width: 100%"
-              ></el-date-picker>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="补偿方式">
-            <p>调休</p>
-          </el-form-item>
-          <el-form-item label="加班原因" prop="desc">
-            <el-input
-              type="textarea"
-              v-model="sizeForm.desc"
-              placeholder="请输入原因"
-            ></el-input>
-          </el-form-item>
-          <el-form-item size="large">
-            <el-button type="primary">提交</el-button>
-            <el-button>重置</el-button>
-          </el-form-item>
-        </el-form>
-      </el-dialog>
+      <!-- 加班调休 -->
+      <AddWord ref="AddWord" />
 
       <!-- 请假调休 -->
-      <el-dialog title="请假" :visible.sync="dialogVisible2" width="40%">
-        <el-form ref="form" :model="sizeForm2" label-width="120px">
-          <el-form-item label="假期类型">
-            <el-select v-model="sizeForm2.region">
-              <el-option label="请假" value="0"></el-option>
-              <el-option label="调休" value="1"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="申请单位">
-            <p>按天</p>
-          </el-form-item>
-          <el-form-item label="开始时间">
-            <el-col :span="11">
-              <el-date-picker
-                type="date"
-                placeholder="选择日期"
-                v-model="sizeForm2.date1"
-                style="width: 100%"
-              ></el-date-picker>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="结束时间">
-            <el-col :span="11">
-              <el-date-picker
-                type="date"
-                placeholder="选择日期"
-                v-model="sizeForm2.date1"
-                style="width: 100%"
-              ></el-date-picker>
-            </el-col>
-          </el-form-item>
-          <el-form-item label="活动名称" prop="name">
-            <el-input v-model="sizeForm2.name"></el-input>
-          </el-form-item>
-          <el-form-item label="申请原因" prop="desc">
-            <el-input
-              type="textarea"
-              v-model="sizeForm.desc"
-              placeholder="请输入原因"
-            ></el-input>
-          </el-form-item>
-          <el-form-item size="large">
-            <el-button type="primary">提交</el-button>
-            <el-button>重置</el-button>
-          </el-form-item>
-        </el-form>
-      </el-dialog>
+      <LeaveOff ref="HandleLeave" />
     </div>
   </div>
 </template>
 
 <script>
+import AddWord from '../components/AddWord.vue'
+import LeaveOff from '../components/LeaveOff.vue'
 export default {
   data() {
     return {
       value: new Date(), // 日历
+      sizeForm: {},
       dialogVisible: false, //加班离职弹出框
       dialogVisible2: false, //请假调休弹出框
-      sizeForm: {},
       sizeForm2: {}
     }
   },
@@ -209,18 +121,22 @@ export default {
     isWeek(date) {
       return date.getDay() === 6 || date.getDay() === 0
     },
-    //加班离职点击弹框
-    OpenAddWord() {
-      this.dialogVisible = true
+
+    //加班离职点击
+    HandleAddWord() {
+      this.$refs.AddWord.openAddWord()
     },
     //请假调休
-    HandleLeave() {
-      this.dialogVisible2 = true
+    HandleLeaveOff() {
+      this.$refs.HandleLeave.openHandleLeave()
     }
   },
   created() {},
   mounted() {},
-  components: {},
+  components: {
+    AddWord,
+    LeaveOff
+  },
   computed: {},
   watch: {}
 }

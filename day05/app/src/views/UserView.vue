@@ -4,8 +4,14 @@
       <el-col :span="24" class="top"
         ><div class="grid-content bg-purple-dark">
           <div class="topButtom">
-            <el-button type="primary" size="small">导入</el-button>
-            <el-button type="primary" icon="el-icon-plus" size="small"
+            <el-button type="primary" size="small" @click="AddUser"
+              >导入</el-button
+            >
+            <el-button
+              type="primary"
+              icon="el-icon-plus"
+              size="small"
+              @click="AddUser"
               >新添员工</el-button
             >
           </div>
@@ -74,8 +80,18 @@
 
             <el-table-column fixed="right" label="操作" width="300">
               <template slot-scope="scope">
-                <el-button type="text" size="small">查看</el-button>
-                <el-button type="text" size="small">转正</el-button>
+                <el-button
+                  type="text"
+                  size="small"
+                  @click="LookUser(scope.row.id)"
+                  >查看</el-button
+                >
+                <el-button
+                  type="text"
+                  size="small"
+                  @click="OpenLookChange(scope.row)"
+                  >转正</el-button
+                >
                 <el-button type="text" size="small">调岗</el-button>
                 <el-button type="text" size="small">离职</el-button>
                 <el-button type="text" size="small">角色</el-button>
@@ -86,10 +102,14 @@
         </div></el-col
       >
     </el-row>
+
+    <!-- 转正查看子组件 -->
+    <LookUserChange ref="OpenLook" :id="id" />
   </div>
 </template>
 
 <script>
+import LookUserChange from '../components/LookUserChange.vue'
 import { QueryUser } from '../api/api'
 export default {
   data() {
@@ -98,18 +118,42 @@ export default {
       page: {
         page: 1,
         size: 10
-      }
+      },
+      id: 0
     }
   },
-  methods: {},
+  methods: {
+    // 转正弹出框
+    OpenLookChange(row) {
+      // console.log(row, 'row')
+      this.id = row.id
+      // console.log(this.id)
+      this.$refs.OpenLook.OpenLookList()
+    },
+    //添加人员
+    AddUser() {
+      this.$notify({
+        title: '提示',
+        message: '演示系统，不支持此操作',
+        duration: 0
+      })
+    },
+    //点击查看
+    LookUser(id) {
+      console.log(id)
+      this.$router.push({ path: 'SetView', query: { id } })
+    }
+  },
   created() {
     QueryUser(this.page).then((res) => {
-      console.log(res, 'res')
+      // console.log(res, 'user')
       this.tableData = res.data.rows
     })
   },
   mounted() {},
-  components: {},
+  components: {
+    LookUserChange
+  },
   computed: {},
   watch: {}
 }

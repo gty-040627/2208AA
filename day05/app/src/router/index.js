@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-// import { getToken } from '../../untils/auth'
+import { getToken } from '../../untils/auth'
 
 Vue.use(VueRouter)
 
@@ -17,9 +17,9 @@ const routes = [
         component: () => import('../views/AboutView.vue')
       },
       {
-        path: 'OriginChart',
-        name: 'OriginChart',
-        component: () => import('../views/OriginChart.vue')
+        path: 'DepartmentView',
+        name: 'DepartmentView',
+        component: () => import('../views/DepartmentView.vue')
       },
       {
         path: 'UserView',
@@ -30,6 +30,16 @@ const routes = [
         path: 'SetView',
         name: 'SetView',
         component: () => import('../views/SetView.vue')
+      },
+      {
+        path: 'ApplyView',
+        name: 'ApplyView',
+        component: () => import('../views/ApplyView.vue')
+      },
+      {
+        path: 'CfgList',
+        name: 'CfgList',
+        component: () => import('../views/CfgList.vue')
       }
     ]
   },
@@ -45,15 +55,15 @@ const router = new VueRouter({
   routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   let token = getToken()
-//   if (token && to.path == '/login') {
-//     next('/')
-//   } else if (!token && to.path !== '/login') {
-//     next('/login')
-//   } else {
-//     next()
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  let token = getToken()
+  if (token && to.path == '/login') {
+    next('/')
+  } else if (!token && to.path !== '/login') {
+    next('/login')
+  } else {
+    next()
+  }
+})
 
 export default router

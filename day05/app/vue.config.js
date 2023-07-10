@@ -1,4 +1,10 @@
 const { defineConfig } = require('@vue/cli-service')
+const path = require('path')
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
 // console.log(process)
 const target =
   process.env.VUE_APP_MOCK_SCHEAM === 'true'
@@ -28,6 +34,25 @@ module.exports = defineConfig({
   //       return options
   //     })
   // },
+
+  //配置svg
+  chainWebpack(config) {
+    // when there are many pages, it will cause too many meaningless requests
+    config.plugins.delete('prefetch')
+    // set svg-sprite-loader
+    config.module.rule('svg').exclude.add(resolve('src/icons')).end()
+    config.module
+      .rule('icons')
+      .test(/\.svg$/)
+      .include.add(resolve('src/icons'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]'
+      })
+      .end()
+  },
 
   //启动服务代理配置
   devServer: {

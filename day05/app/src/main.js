@@ -11,6 +11,9 @@ Vue.use(ElementUI)
 import httpRequest from '../untils/httpRequest.js'
 Vue.prototype.$http = httpRequest
 
+//图标引入
+import '@/icons'
+
 Vue.config.productionTip = false
 
 new Vue({
