@@ -1,29 +1,18 @@
 <template>
-  <div class='home'>
-    <component :is="One"/>
-    <br />
-    <hr />
-    <component :is="change ? gaotianyuan : One " />
-    <button @click="change = true">切换组件</button>
+  <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref, reactive, toRefs } from 'vue';
-import { useStore } from 'vuex';
-import { useRouter, useRoute } from 'vue-router';
-import gaotianyuan from "../components/gaotianyuan.vue"
-import One from "../components/One.vue"
-const store = useStore();
-const router = useRouter();
-const route = useRoute();
-const data = reactive({});
+<script lang="ts">
+import { defineComponent } from "vue"
+import HelloWorld from "@/components/HelloWorld.vue" // @ is an alias to /src
 
-const change = ref(false)
-
+export default defineComponent({
+  name: "HomeView",
+  components: {
+    HelloWorld
+  }
+})
 </script>
-
-<style lang='scss' scoped>
-
-</style>
-
