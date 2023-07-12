@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./ts.js"></script>
+   
+</body>
+<script>
+    //  es6的class
+     class people {
+        constructor(name,age){
+            this.name = name
+            this.age = age
+        }
+        sport(){
+            return this.name + '会运动'
+        }
+    }
+    let p = new people('小明',18)
+    console.log(p.sport());   //小明会运动
+    console.log(p.age);   //18
+</script>
+</html>

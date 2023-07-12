@@ -69,7 +69,11 @@ export default {
     //点击提交确定按钮
     AddWordList() {
       QueryAddWord(this.sizeForm).then((res) => {
-        // console.log(res, 'QueryAddWord')
+        console.log(res, 'QueryAddWord')
+        this.$message({
+          message: '操作成功',
+          type: 'success'
+        })
         this.dialogVisible = false
       })
     }

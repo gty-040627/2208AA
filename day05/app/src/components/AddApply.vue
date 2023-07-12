@@ -14,17 +14,19 @@
         </el-form-item>
         <el-form-item label="企业可见">
           <el-switch
-            v-model="value"
+            v-model="sizeForm.enVisible"
             active-color="#66b1ff"
             inactive-color="#dcdfe6"
+            active-value="1"
+            inactive-value="0"
           >
           </el-switch>
         </el-form-item>
         <el-form-item label="企业顺序">
-          <el-input type="type" v-model="sizeForm.desc"></el-input>
+          <el-input type="type" v-model="sizeForm.menuOrder"></el-input>
         </el-form-item>
         <el-form-item label="菜单icon">
-          <el-input type="type" v-model="sizeForm.desc"></el-input>
+          <el-input type="type" v-model="sizeForm.menuIcon"></el-input>
         </el-form-item>
 
         <el-form-item size="large">
@@ -55,10 +57,10 @@
           </el-switch>
         </el-form-item>
         <el-form-item label="企业顺序">
-          <el-input type="type" v-model="NewLookList.type"></el-input>
+          <el-input type="type" v-model="NewLookList.menuOrder"></el-input>
         </el-form-item>
         <el-form-item label="菜单icon">
-          <el-input type="type" v-model="NewLookList.desc"></el-input>
+          <el-input type="type" v-model="NewLookList.menuIcon"></el-input>
         </el-form-item>
 
         <el-form-item size="large">
@@ -78,14 +80,8 @@ export default {
     return {
       // 添加
       sizeForm: {
-        code: '',
-        description: '',
-        enVisible: '',
-        menuIcon: '',
-        menuOrder: '',
-        name: '',
-        pid: '',
-        type: ''
+        pid: '0',
+        type: 1
       },
       dialogVisible: false, //权限管理添加弹出框
       value: false,
@@ -112,11 +108,13 @@ export default {
     },
     //添加全权限管理
     AddApplyList() {
-      QueryAddApply().then((res) => {
+      QueryAddApply(this.sizeForm).then((res) => {
         console.log(res, 'QueryAddApply')
         this.dialogVisible = false
-        // this.AddNewList = res
-        // console.log(this.AddNewList)
+        this.$message({
+          message: '添加成功',
+          type: 'success'
+        })
       })
     },
     // 查看的接口

@@ -76,9 +76,9 @@ export default {
     //查看
     //接收子组件的查看弹出框
     Openlook(row) {
-      console.log(row)
+      // console.log(row)
       this.id = row.id
-      console.log(this.id, '22')
+      // console.log(this.id, '22')
       this.$nextTick(() => {
         this.$refs.Apply.LookApply()
       })

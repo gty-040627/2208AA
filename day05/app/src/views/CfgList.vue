@@ -6,7 +6,9 @@
         <div>
           <el-button type="primary" size="small">导入</el-button>
           <el-button type="primary" size="small">提醒</el-button>
-          <el-button type="primary" size="small">设置</el-button>
+          <el-button type="primary" size="small" @click="OpenSetList"
+            >设置</el-button
+          >
           <el-button type="primary" size="small">历史归档</el-button>
           <el-button type="primary" size="small">三月份报表</el-button>
         </div>
@@ -148,10 +150,13 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <SetLookList ref="Open" />
   </div>
 </template>
 
 <script>
+import SetLookList from '@/components/SetLookList.vue'
 import { QueryCfgList } from '../api/api'
 export default {
   data() {
@@ -164,7 +169,12 @@ export default {
       checked: false
     }
   },
-  methods: {},
+  methods: {
+    //设置页面点击事件
+    OpenSetList() {
+      this.$refs.Open.OpenSet()
+    }
+  },
   created() {
     QueryCfgList(this.pages).then((res) => {
       // console.log(res, 'QueryCfgList')
@@ -172,7 +182,9 @@ export default {
     })
   },
   mounted() {},
-  components: {},
+  components: {
+    SetLookList
+  },
   computed: {},
   watch: {}
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-container>
-      <el-aside width="200px">
+      <el-aside :width="isCollapse ? '48px' : '200px'">
         <el-menu
           default-active="2"
           class="el-menu-vertical-demo"
@@ -55,23 +55,26 @@
       <el-container>
         <el-header>
           <div>
-            <i class="el-icon-s-fold"></i>
+            <i class="el-icon-s-fold" @click="CloseMenu"></i>
             <span class="title">江苏传智播客教育科技股份有限公司</span>
             <span class="small">体验版</span>
           </div>
           <div class="toeing">
-            <i class="el-icon-menu"></i>
+            <i class="el-icon-menu" @click="handleScreen"></i>
             <i class="el-icon-search"></i>
             <span class="backColor"
               ><i class="el-icon-arrow-down" size="small"></i
             ></span>
             <el-dropdown @command="handler">
               <span class="el-dropdown-link">
-                下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+                <img src="../../public/小人~.png" alt="" class="imgssss" />
+                管理员<i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="GotoAbout">首页</el-dropdown-item>
-                <el-dropdown-item command="b">退出登录</el-dropdown-item>
+                <el-dropdown-item command="b" id="logoutButton"
+                  >退出登录</el-dropdown-item
+                >
               </el-dropdown-menu>
             </el-dropdown>
           </div>
@@ -85,18 +88,28 @@
 </template>
 
 <script>
+import screenfull from 'screenfull'
 export default {
   data() {
-    return {}
+    return {
+      isCollapse: false
+    }
   },
   methods: {
     handler(command) {
       if (command == 'GotoAbout') {
-        // console.log(111)
         this.$router.push('/about')
       } else if (command == 'b') {
-        // console.log('b')
+        document.cookie =
+          'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+        this.$router.push('/login')
       }
+    },
+    handleScreen() {
+      screenfull.toggle()
+    },
+    CloseMenu() {
+      this.isCollapse = !this.isCollapse
     }
   },
   created() {},
@@ -108,9 +121,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.imgssss {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
 .el-dropdown-link {
   cursor: pointer;
   color: #fff;
+  display: flex;
+  align-items: center;
 }
 .el-icon-arrow-down {
   font-size: 12px;
@@ -132,12 +153,12 @@ export default {
     color: blue;
   }
 }
-
 .eling {
   margin-top: 20px;
 }
 .el-aside {
   color: #fff;
+  transition: all 0.5s;
 }
 .el-icon-menu {
   padding-left: 500px;
@@ -155,13 +176,21 @@ export default {
     justify-content: space-around;
     align-items: center;
     .backColor {
-      width: 30px;
-      height: 30px;
-      background-color: #3361d589;
+      width: 35px;
+      height: 35px;
+      border-radius: 3px;
       color: #fff;
       border: 1px solid #fff;
-      text-align: center;
-      line-height: 30px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      i {
+        width: 25px;
+        height: 25px;
+        background-color: #409eff;
+        text-align: center;
+        line-height: 25px;
+      }
     }
   }
   .title {

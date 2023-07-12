@@ -33,6 +33,14 @@ export const QueryDepartment = (options) =>
   http
     .get(http.adornUrl('/company/department'), { params: options })
     .then((res) => res.data)
+//组织架构添加页面接口
+export const QueryDepartmentAdd = (options) =>
+  http
+    .post(http.adornUrl('/company/department'), options)
+    .then((res) => res.data)
+//组织架构查询页面接口
+export const QueryDepartmentLook = (id) =>
+  http.get(http.adornUrl(`/company/department/${id}`)).then((res) => res.data)
 
 //权限管理页面接口
 export const QueryApply = (options) =>
@@ -51,11 +59,18 @@ export const QueryDelApply = (options) =>
 export const QueryLookApply = (id) =>
   http.get(http.adornUrl(`sys/permission/${id}`)).then((res) => res.data)
 //权限api查看接口
-export const QueryLookApi = (id) =>
-  http.get(http.adornUrl(`/sys/permission/${id}`)).then((res) => res.data)
+export const QueryLookApi = (options) =>
+  http
+    .get(http.adornUrl('/sys/permission'), { params: options })
+    .then((res) => res.data)
 
 //考勤首页接口
 export const QueryCfgList = (options) =>
   http
     .get(http.adornUrl('/attendances'), { params: options })
+    .then((res) => res.data.data)
+//考勤设置按钮接口
+export const QueryCfgListSetOne = (data) =>
+  http
+    .post(http.adornUrl(`/cfg/atte/item?departmentId=${data.departmentId}`))
     .then((res) => res.data.data)

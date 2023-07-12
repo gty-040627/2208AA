@@ -65,7 +65,11 @@ export default {
     },
     LeaveOffList() {
       QueryLeaveOff(this.sizeForm2).then((res) => {
-        // console.log(res, 'QueryLeaveOff')
+        console.log(res, 'QueryLeaveOff')
+        this.$message({
+          message: '操作成功',
+          type: 'success'
+        })
         this.dialogVisible2 = false
       })
     }
