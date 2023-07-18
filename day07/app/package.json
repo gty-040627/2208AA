@@ -4,11 +4,15 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "serve:test": "vue-cli-service serve --mode testing",
+    "serve:stage": "vue-cli-service serve --mode staging",
     "build": "vue-cli-service build",
+    "build:test": "vue-cli-service build --mode testing",
+    "build:stage": "vue-cli-service build --mode staging",
+    "lint": "vue-cli-service lint",
     "prettier": "prettier --write .",
     "prepare": "husky install",
-    "lint-staged": "lint-staged",
-		"lint": "vue-cli-service lint"
+    "commit": "cz"
   },
   "lint-staged": {
     "*.{js,ts,vue,jsx,tsx}": [
@@ -18,12 +22,19 @@
     ]
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "axios": "^1.4.0",
     "core-js": "^3.8.3",
+    "element-plus": "^2.3.7",
+    "js-cookie": "^3.0.5",
+    "moment": "^2.29.4",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-typescript": "~5.0.0",
@@ -40,7 +51,6 @@
     "sass-loader": "^12.0.0",
     "typescript": "~4.5.5"
   },
-
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
