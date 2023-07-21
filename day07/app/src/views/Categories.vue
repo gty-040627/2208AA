@@ -6,9 +6,7 @@
     </div>
     <el-form :model="form" label-width="120px">
       <el-form-item label="选择商品分类">
-        <el-select v-model="form.cat_name" placeholder="请选择">
-          <el-option v-for="item in form"  :value="item.cat_name"> </el-option>
-        </el-select>
+        <el-cascader v-model="value" :options="options" :props="props"  />
       </el-form-item>
     </el-form>
     <el-tabs v-model="activeName" class="demo-tabs">
@@ -44,15 +42,23 @@ const router = useRouter()
 const route = useRoute()
 const data = reactive({})
 
+const value = ref([])
+
+
 const form = ref<TS.CategoriesList>({
   cat_name: "",
-	cat_id:''
+  cat_id: ""
+})
+const options = ref()
+const props = ref({
+	label:'cat_name',
+	value:'cat_id'
 })
 //渲染
 const GetCategories = () => {
   queryCategories().then((res) => {
-    console.log(res, "queryCategories")
-    form.value = res.data
+    // console.log(res, "queryCategories")
+    options.value = res.data
     console.log(form)
   })
 }
@@ -61,6 +67,8 @@ GetCategories()
 const activeName = ref("first")
 
 const tableData = [{}]
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -98,7 +106,7 @@ const tableData = [{}]
   font-size: 32px;
   font-weight: 600;
 }
-.el-table{
-	margin-top: 10px;
+.el-table {
+  margin-top: 10px;
 }
 </style>

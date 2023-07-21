@@ -5,9 +5,9 @@
     <el-table :data="tableData" :border="parentBorder" style="width: 100%">
       <el-table-column type="expand">
         <template #default="scope">
-          <el-table :data="tableData.children" style="width: 100%">
-            <el-table-column type="index" label="" />
-            <el-table-column prop="cat_name" />
+          <el-table :data="tableData" style="width: 100%">
+            <el-table-column  label="" />
+            <el-table-column prop="children.cat_name" />
             <el-table-column prop="cat_deleted">
               <template #default="scope">
                 <p v-if="scope.row.cat_deleted == false" class="deleted">√</p>
