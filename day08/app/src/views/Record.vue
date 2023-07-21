@@ -23,12 +23,12 @@
 					}}
 					)
 				</span>
-
+			
 				<br />
 				<span class="time">{{ Timeing(item.createTime) }}</span>
 			</div>
 			<div class="tow">
-				<span :class="item.payerNumber ? 'orange' : 'green'">
+					<span :class="item.payerNumber ? 'orange' : 'green'">
 					{{ item.payerNumber ? '+' : '-' }} {{ item.amount }}
 				</span>
 				<br />
