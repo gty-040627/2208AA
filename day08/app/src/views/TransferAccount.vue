@@ -83,7 +83,7 @@
 		amount: '',
 		remark: '',
 	});
-	//回填
+	//回填金额和账户
 	const money = ref();
 	const shoukuai = ref()
 	// console.log(route.query.items);
