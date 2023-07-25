@@ -51,7 +51,7 @@
 	const list = ref();
 	const GetList = () => {
 		QueryList().then((res) => {
-			// console.log(res, 'QueryList');
+			console.log(res, 'QueryList');
 			list.value = res.data.data;
 		});
 	};

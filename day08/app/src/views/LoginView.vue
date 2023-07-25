@@ -56,7 +56,7 @@
 	const GotoAbout = () => {
 		console.log(123456);
 		QueryLogin(from).then((res) => {
-			// console.log(res, 'QueryLogin');
+			console.log(res, 'QueryLogin');
 			localStorage.setItem('token', res.data.token);
 			router.push('/about');
 			showNotify({ type: 'success', message: '登陆成功' });
