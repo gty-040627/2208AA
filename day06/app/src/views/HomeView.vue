@@ -10,7 +10,7 @@
 		<button @click="HandleChangeJob">改变v3的工作</button>
 		<hr />
 
-		{{ list.firstName }} -- {{ list.lastName }}
+		<p>{{ list.firstName }} -- {{ list.lastName }}</p>
 		<hr />
 		{{ hope }}
 		<input type="text" v-model="hope">
