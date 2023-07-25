@@ -34,7 +34,7 @@
       </el-table-column>
     </el-table>
 
-    <!-- 添加、查看弹出框子组件 -->
+    <!-- 添加和查看的弹出框子组件 -->
     <AddApply ref="Apply" :id="id" />
     <!-- 查看api权限 -->
     <LookApplyApi ref="LookApi" :id="id" />
