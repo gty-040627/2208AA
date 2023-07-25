@@ -48,6 +48,9 @@
               width="170"
               sortable
             >
+              <template>
+                <p>{{ createTime | Tiem }}</p>
+              </template>
             </el-table-column>
             <el-table-column
               prop="departmentName"
@@ -111,6 +114,7 @@
 <script>
 import LookUserChange from '../components/LookUserChange.vue'
 import { QueryUser } from '../api/api'
+import moment from 'moment'
 export default {
   data() {
     return {
@@ -153,6 +157,11 @@ export default {
   mounted() {},
   components: {
     LookUserChange
+  },
+  filters: {
+    Tiem(e) {
+      return moment(e).format('YYYY-M-DD HH:mm:ss')
+    }
   },
   computed: {},
   watch: {}

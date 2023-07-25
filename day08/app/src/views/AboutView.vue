@@ -21,7 +21,9 @@
 					二类卡
 					<span class="lan">正常</span>
 				</p>
-				<p class="money">可用余额</p>
+				<p class="money">可用余额</p> 	
+				<!-- <van-field 	:right-icon="!icon ? 'closed-eye' : 'eye-o'"
+					@click-right-icon="icon = !icon"/> -->
 				<p class="qian">{{ item.balance }}.00</p>
 			</div>
 			<div class="btn">
@@ -42,6 +44,8 @@
 	const router = useRouter();
 	const route = useRoute();
 	const data = reactive({});
+	//密码小眼睛
+	let icon=ref(false)
 	//退出按钮
 	const onClickRight = () => {
 		localStorage.removeItem('token');

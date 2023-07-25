@@ -10,7 +10,6 @@
       <div class="info">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
           <el-form-item>
-            <svg-icon icon-class="a-009_chuchashenqing" />
             <el-input
               v-model="ruleForm.mobile"
               prefix-icon="el-icon-user-solid"

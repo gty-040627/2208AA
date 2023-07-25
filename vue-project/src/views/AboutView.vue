@@ -16,21 +16,21 @@
         <van-row>
           <van-col span="8">
             <router-link to="/" class="nav">
-              <img src="../../public/5.png" alt="" />
+              <img src="../../public/icon_14dhfnxbzsfd/dingweiweizhi.png" alt="" class="imgimgimg"/>
               <p class="title">问医生</p>
               <p class="desc">按科室查问医生</p>
             </router-link>
           </van-col>
           <van-col span="8">
             <router-link to="/consult/fast" class="nav">
-              <img src="../../public/5.png" alt="" />
+              <img src="../../public/icon_14dhfnxbzsfd/fangkeyaoqing.png" alt="" class="imgimgimg"/>
               <p class="title">极速问诊</p>
               <p class="desc">20s医生极速回复</p>
             </router-link>
           </van-col>
           <van-col span="8">
             <router-link to="/" class="nav">
-              <img src="../../public/3.png" alt="" />
+              <img src="../../public/icon_14dhfnxbzsfd/jishiben.png" alt="" class="imgimgimg"/>
               <p class="title">开药门诊</p>
               <p class="desc">线上买药更方便</p>
             </router-link>
@@ -39,25 +39,25 @@
         <van-row>
           <van-col span="6">
             <router-link to="/" class="nav min">
-              <img src="../../public/1.png" alt="" class="imgs" />
+              <img src="../../public/icon_14dhfnxbzsfd/kabao.png" alt="" class="imgs" />
               <p class="title">药品订单</p>
             </router-link>
           </van-col>
           <van-col span="6">
             <router-link to="/" class="nav min">
-              <img src="../../public/2.png" alt="" class="imgs" />
+              <img src="../../public/icon_14dhfnxbzsfd/shangchuanziliao.png" alt="" class="imgs" />
               <p class="title">健康档案</p>
             </router-link>
           </van-col>
           <van-col span="6">
             <router-link to="/" class="nav min">
-              <img src="../../public/3.png" alt="" class="imgs" />
+              <img src="../../public/icon_14dhfnxbzsfd/wuyefengcai.png" alt="" class="imgs" />
               <p class="title">我的处方</p>
             </router-link>
           </van-col>
           <van-col span="6">
             <router-link to="/" class="nav min">
-              <img src="../../public/4.png" alt="" class="imgs" />
+              <img src="../../public/icon_14dhfnxbzsfd/shangchuanziliao.png" alt="" class="imgs" />
               <p class="title">疾病查询</p>
             </router-link>
           </van-col>
@@ -112,8 +112,12 @@ const active = ref(1)
   background-color: #fafafb;
 }
 .imgs {
-  width: 50px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
+}
+.imgimgimg {
+  width: 60px;
+  height: 60px;
 }
 .home-page {
   padding-bottom: 50px;
@@ -188,6 +192,7 @@ const active = ref(1)
         font-size: 13px;
         color: #000;
         font-weight: normal;
+        padding-top: 5px;
       }
     }
   }

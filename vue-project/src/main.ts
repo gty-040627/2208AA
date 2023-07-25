@@ -10,6 +10,8 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 //持久化插件
 import persist from 'pinia-plugin-persistedstate'
+//图标组件-打包svg地图
+import 'virtual:svg-icons-register'
 
 const app = createApp(App)
 
