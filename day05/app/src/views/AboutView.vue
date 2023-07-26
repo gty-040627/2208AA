@@ -149,7 +149,7 @@ export default {
 .bgColor {
   width: 84vw;
   // height: 100vh;
-  background-color: #cccccc3b;
+  background-color: #ccccccaa;
 }
 .el-button {
   width: 100px;
@@ -192,7 +192,7 @@ export default {
 }
 .item2 {
   width: 99%;
-  height: 600px;
+  height: 500px;
   position: absolute;
   top: 100px;
   left: 5px;
@@ -243,7 +243,7 @@ export default {
   background-color: #cccccc2a;
   .RightTop {
     width: 100%;
-    height: 35%;
+    height: 50%;
     border-radius: 5px;
     box-shadow: 5px 5px 5px 5px #cccccc74;
     background-color: #fff;
@@ -276,7 +276,7 @@ export default {
     border-radius: 5px;
     background-color: #fff;
     padding: 10px;
-    margin-top: 100px;
+    margin-top: 20px;
     p {
       font-size: 25px;
       height: 50px;
@@ -306,7 +306,7 @@ export default {
 
   .GongGao {
     position: absolute;
-    top: 850px;
+    top: 750px;
     width: 60%;
     height: 400px;
     // background-color: pink;
@@ -343,7 +343,7 @@ export default {
     border-bottom: 1px solid #ccc;
     position: absolute;
     border-radius: 5px;
-    top: 870px;
+    top: 770px;
     left: 800px;
     padding: 20px;
     p {

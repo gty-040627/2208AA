@@ -8,11 +8,11 @@
             <p>管理员</p>
             <span>手机: 138000000002</span>
             <span>部门 总裁办</span> <br />
-            <span>入职时间:2018-11-02T08 00:00 000+0000</span>
+            <span>入职时间:2023-7-26 15:34:46</span>
           </div>
         </div>
         <el-form-item label="转正时间">
-          <el-input v-model="sizeForm.dateOfCorrection"></el-input>
+          <el-input v-model="sizeForm.dateOfCorrection"> </el-input>
         </el-form-item>
         <el-form-item label="转正评价">
           <el-input v-model="sizeForm.correctionEvaluation"></el-input>
@@ -24,6 +24,7 @@
 
 <script>
 import { QueryUserChange } from '../api/api'
+import moment from 'moment'
 export default {
   props: ['id'],
   data() {
@@ -49,6 +50,11 @@ export default {
   created() {},
   mounted() {},
   components: {},
+  filters: {
+    Tiem(e) {
+      return moment(e).format('YYYY-M-DD HH:mm:ss')
+    }
+  },
   computed: {},
   watch: {}
 }

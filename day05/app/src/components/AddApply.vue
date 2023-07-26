@@ -2,7 +2,7 @@
   <div>
     <!-- 添加弹出框 -->
     <el-dialog title="添加权限" :visible.sync="dialogVisible" width="50%">
-      <el-form ref="form" :model="sizeForm" label-width="120px">
+      <el-form ref="form" :model="sizeForm" label-width="70px">
         <el-form-item label="权限名称">
           <el-input type="type" v-model="sizeForm.name"></el-input>
         </el-form-item>
@@ -29,7 +29,7 @@
           <el-input type="type" v-model="sizeForm.menuIcon"></el-input>
         </el-form-item>
 
-        <el-form-item size="large">
+        <el-form-item size="large" class="btn">
           <el-button type="primary" @click="AddApplyList">确定</el-button>
           <el-button>取消</el-button>
         </el-form-item>
@@ -38,7 +38,7 @@
 
     <!-- 查看弹出框 -->
     <el-dialog title="查看权限" :visible.sync="dialogVisible2" width="50%">
-      <el-form ref="form" :model="sizeForm2" label-width="120px">
+      <el-form ref="form" :model="sizeForm2" label-width="70px">
         <el-form-item label="权限名称">
           <el-input type="type" v-model="NewLookList.name"></el-input>
         </el-form-item>
@@ -63,7 +63,7 @@
           <el-input type="type" v-model="NewLookList.menuIcon"></el-input>
         </el-form-item>
 
-        <el-form-item size="large">
+        <el-form-item size="large" class="btn">
           <el-button type="primary">确定</el-button>
           <el-button>取消</el-button>
         </el-form-item>
@@ -140,4 +140,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.btn {
+  margin-left: 450px;
+}
+</style>
