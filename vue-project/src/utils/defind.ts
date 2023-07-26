@@ -10,5 +10,26 @@ interface about {
   current: number
   pageSize: number
 }
+interface pages {
+  current: number
+  pageSize: number
+}
+//食品
+interface foods {
+  type: string
+  current: number
+  pageSize: number
+}
+//已关注为关注
+interface like {
+  id: string
+  type: string
+}
 
-export { Login,about }
+interface list {
+  type: number
+  current: number
+  pageSize: number
+}
+
+export type { Login, about, pages, foods, like, list }

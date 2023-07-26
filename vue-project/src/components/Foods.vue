@@ -1,6 +1,6 @@
 <template>
-  <div class="knowledge">
-    <div v-for="(item, index) in data" :key="index" class="data">
+  <div class="foods">
+    <div v-for="(item, index) in list" :key="index" class="data">
       <div class="data-top">
         <div><img :src="item.creatorAvatar" alt="" /></div>
         <div>
@@ -21,7 +21,7 @@
           </div>
         </div>
         <p class="love">
-          {{ item.collectionNumber }}收藏 &nbsp;&nbsp; {{ item.commentNumber }}关注
+          {{ item.collectionNumber }}收藏 &nbsp;&nbsp; {{ item.commentNumber }}评论
         </p>
       </div>
     </div>
@@ -31,26 +31,24 @@
 <script setup lang="ts">
 import { ref, reactive, toRefs } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { QueryAbout } from '../utils/api'
-import * as TS from '../utils/defind'
+import { QueryFood } from '../utils/api'
 const router = useRouter()
 const route = useRoute()
-
-const pages = ref<TS.about>({
-  type: 'recommend',
+const data = reactive({
+  type: 'food',
   current: 1,
-  pageSize: 15
+  pageSize: 18
 })
-const data = ref()
-//推荐接口
-const GetAbout = () => {
-  QueryAbout(pages.value).then((res: any) => {
-    // console.log(res, 'QueryAbout')
-    data.value = res.data.data.rows
+
+//饮食接口
+const list = ref()
+const GetFoods = () => {
+  QueryFood(data).then((res) => {
+    // console.log(res, 'QueryFood')
+    list.value = res.data.data.rows
   })
 }
-GetAbout()
-
+GetFoods()
 //关注状态
 const status =ref(true)
 const change=()=>{
@@ -64,7 +62,7 @@ const change=()=>{
   margin: 0;
   box-sizing: border-box;
 }
-.knowledge {
+.foods {
   width: 95%;
   margin: auto;
 }
@@ -123,7 +121,7 @@ const change=()=>{
   width: 90%;
   height: 100px;
   border-radius: 10px;
-  margin-top: 10px;
+  margin: 5px;
 }
 .title2 {
   font-size: 14px;

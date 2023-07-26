@@ -15,21 +15,21 @@
       <div class="home-navs">
         <van-row>
           <van-col span="8">
-            <router-link to="/" class="nav">
+            <router-link to="" class="nav">
               <img src="../../public/icon_14dhfnxbzsfd/dingweiweizhi.png" alt="" class="imgimgimg"/>
               <p class="title">问医生</p>
               <p class="desc">按科室查问医生</p>
             </router-link>
           </van-col>
           <van-col span="8">
-            <router-link to="/consult/fast" class="nav">
-              <img src="../../public/icon_14dhfnxbzsfd/fangkeyaoqing.png" alt="" class="imgimgimg"/>
+            <router-link to="/fast" class="nav" >
+              <img src="../../public/icon_14dhfnxbzsfd/fangkeyaoqing.png" alt="" class="imgimgimg" @click="gotoFas"/>
               <p class="title">极速问诊</p>
               <p class="desc">20s医生极速回复</p>
             </router-link>
           </van-col>
           <van-col span="8">
-            <router-link to="/" class="nav">
+            <router-link to="" class="nav">
               <img src="../../public/icon_14dhfnxbzsfd/jishiben.png" alt="" class="imgimgimg"/>
               <p class="title">开药门诊</p>
               <p class="desc">线上买药更方便</p>
@@ -38,25 +38,25 @@
         </van-row>
         <van-row>
           <van-col span="6">
-            <router-link to="/" class="nav min">
+            <router-link to="" class="nav min">
               <img src="../../public/icon_14dhfnxbzsfd/kabao.png" alt="" class="imgs" />
               <p class="title">药品订单</p>
             </router-link>
           </van-col>
           <van-col span="6">
-            <router-link to="/" class="nav min">
+            <router-link to="" class="nav min">
               <img src="../../public/icon_14dhfnxbzsfd/shangchuanziliao.png" alt="" class="imgs" />
               <p class="title">健康档案</p>
             </router-link>
           </van-col>
           <van-col span="6">
-            <router-link to="/" class="nav min">
+            <router-link to="" class="nav min">
               <img src="../../public/icon_14dhfnxbzsfd/wuyefengcai.png" alt="" class="imgs" />
               <p class="title">我的处方</p>
             </router-link>
           </van-col>
           <van-col span="6">
-            <router-link to="/" class="nav min">
+            <router-link to="" class="nav min">
               <img src="../../public/icon_14dhfnxbzsfd/shangchuanziliao.png" alt="" class="imgs" />
               <p class="title">疾病查询</p>
             </router-link>
@@ -76,7 +76,9 @@
       </div>
       <!-- tab栏 -->
       <van-tabs shrink sticky v-model:active="active">
-        <van-tab title="关注">1</van-tab>
+        <van-tab title="关注">
+          <pages />
+        </van-tab>
         <van-tab title="推荐">
           <!-- 子组件 -->
           <knowledge />
@@ -85,7 +87,9 @@
           <!-- 子组件 -->
           <knowledge />
         </van-tab>
-        <van-tab title="饮食">4</van-tab>
+        <van-tab title="饮食">
+          <Foods />
+        </van-tab>
       </van-tabs>
     </div>
   </div>
@@ -95,10 +99,18 @@
 import { ref, reactive, toRefs } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import knowledge from "../components/knowledge.vue"
+import Foods from "../components/Foods.vue"
+import pages from "../components/pages.vue"
 const router = useRouter()
 const route = useRoute()
 // active 的值是 tab 的索引
 const active = ref(1)
+
+const gotoFas=()=>{
+  console.log(123);
+  
+  // router.push('/home/my')
+}
 
 </script>
 

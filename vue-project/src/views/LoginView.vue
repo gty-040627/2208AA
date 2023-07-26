@@ -18,6 +18,7 @@
 	//复选框
 	const checked = ref(false);
 
+	//登录
 	const login = () => {
 		if (checked.value == false) {
 			showToast('请勾选我已同意');
@@ -25,7 +26,7 @@
 			QueryLogin(from.value).then((res) => {
 				// console.log(res, 'QueryLogin');
 				localStorage.setItem('token', res.data.data.token);
-				router.push('/my');
+				router.push('/home/my');
 			});
 		}
 	};

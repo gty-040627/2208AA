@@ -43,7 +43,7 @@
 				<div class="xiaoyu">></div>
 			</div>
 			<div class="nav3-item">
-				<div>
+				<div @click="router.push('/home/about')">
 					<van-icon name="coupon-o" />
 					<span>我的处方</span>
 				</div>
@@ -64,21 +64,21 @@
 				<div class="xiaoyu">></div>
 			</div>
 			<div class="nav3-item">
-				<div>
+				<div @click="router.push('/home/about')">
 					<van-icon name="edit" />
 					<span>我的评价</span>
 				</div>
 				<div class="xiaoyu">></div>
 			</div>
 			<div class="nav3-item">
-				<div>
+				<div @click="router.push('/home/about')">
 					<van-icon name="service-o" />
 					<span>官方客服</span>
 				</div>
 				<div class="xiaoyu">></div>
 			</div>
 			<div class="nav3-item">
-				<div>
+				<div @click="router.push('/home/about')">
 					<van-icon name="send-gift-o" />
 					<span>客服</span>
 				</div>

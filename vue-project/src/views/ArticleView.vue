@@ -1,17 +1,18 @@
 <template>
-  <div class='article'>article
-
+  <div class='article'>
+    article
+    <br>
+    <button @click="change">改变</button>
+    <p>{{ flag }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
 import {ref} from "vue"
-const name = ref({
-  ming:'高',
-  xing:'田园'
-})
-console.log(eval('name'));
-
+const flag = ref(false)
+const change=()=>{
+  flag.value =! flag.value
+}
 </script>
 
 <style lang='scss' scoped>

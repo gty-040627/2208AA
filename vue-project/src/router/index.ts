@@ -8,25 +8,41 @@ const router = createRouter({
       name: 'login',
       component: () => import('../views/LoginView.vue')
     },
+    {
+      path: '/fast',
+      name: 'fast',
+      component: () => import('../views/FastView.vue')
+    },
+    {
+      path: '/list',
+      name: 'list',
+      component: () => import('../views/ListView.vue')
+    },
+    {
+      path: '/alldep',
+      name: 'alldep',
+      component: () => import('../views/AllDep.vue')
+    },
    {
       path:'/home',
       name: 'home',
+      redirect:'/home/about',
       component:()=>import('../views/Home.vue'),
       children:[
         {
-          path:'/my',
+          path:'my',
           name: 'my',
           component:()=>import('../views/MyView.vue')
         },{
-          path:'/about',
+          path:'about',
           name: 'about',
           component:()=>import('../views/AboutView.vue')
         },{
-          path:'/article',
+          path:'article',
           name: 'article',
           component:()=>import('../views/ArticleView.vue')
         },{
-          path:'/notify',
+          path:'notify',
           name: 'notify',
           component:()=>import('../views/NotifyView.vue')
         }
