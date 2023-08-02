@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <el-dialog v-model="dialogVisible" title="添加用户" width="50%" :before-close="closeAdd">
+    <el-dialog v-model="dialogVisible" :title="props.title" width="50%" :before-close="closeAdd" :close-on-click-modal="false">
       <el-form
         ref="ruleFormRef"
         :model="ruleForm"
@@ -69,10 +69,13 @@ const rules = reactive<FormRules<TS.AddForm>>({
   ],
 })
 
+const props =    defineProps(['title'])
 
 
 </script>
 
 <style lang="scss" scoped>
-
+.btn{
+	margin-left: 530px;
+}
 </style>

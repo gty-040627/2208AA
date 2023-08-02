@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <el-dialog v-model="dialogVisible" title="添加商品" width="50%" :before-close="close">
+    <el-dialog v-model="dialogVisible" title="添加商品" width="50%" :before-close="close" :close-on-click-modal="false">
       <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" :size="formSize" status-icon
         >
         <el-form-item label="角色名称" prop="goods_name">
@@ -73,4 +73,8 @@ const close =()=>{
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.btn{
+	margin-left: 550px;
+}
+</style>

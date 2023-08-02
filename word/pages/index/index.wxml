@@ -1,0 +1,47 @@
+<view class="big">
+  <scroll-view scroll-x="true" class="navber">
+    <text class="navber-item">精选</text>
+    <text wx:for="{{navber}}" wx:key="item.id" class="navber-item">{{item.title}}</text>
+  </scroll-view>
+
+  <swiper autoplay circular indicator-dots indicator-color="#fff" interval="2000">
+    <swiper-item wx:for="{{banner}}" wx:key="item.id">
+      <image src="{{item.banner_img}}" mode="widthFix" />
+    </swiper-item>
+  </swiper>
+
+  <view class="lll">
+    <image src="./Snipaste_2023-06-04_20-09-46.png" mode="" />
+    <text wx:for="{{gonggao}}" wx:key="item.id">{{item.title}}</text>
+  </view>
+
+  <view class="yyy">
+    <text>距离高研201天</text>
+  </view>
+
+  <view wx:for="{{list}}" wx:key="item.id" class="list">
+    <view class="top">
+      {{item.course_classify_title}}
+    </view>
+    <view class="title">
+      <text>{{item.title}}</text>
+    </view>
+    <view class="tt">
+      <view wx:for="{{item.teacher}}" class="getteacher">
+        <image src="{{item.avatar}}" mode="" />
+        <text>{{item.teacher_name}}</text>
+      </view>
+    </view>
+    <view class="man">
+       限 {{item.a_stock}}人
+    </view>
+    <view class="price">
+       <text>仅剩{{item.course_type}}个名额</text>
+       <text class="ppp">￥{{item.price}}</text>
+    </view>
+  </view>
+
+
+
+
+</view>

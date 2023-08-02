@@ -1,6 +1,11 @@
 <template>
   <div>
-    <el-dialog title="转正" :visible.sync="dialogVisible" width="50%">
+    <el-dialog
+      title="转正"
+      :visible.sync="dialogVisible"
+      width="50%"
+      :close-on-click-modal="false"
+    >
       <el-form ref="form" :model="sizeForm" label-width="120px">
         <div class="top">
           <div><img src="sizeForm.enclosure" alt="" /></div>
@@ -12,8 +17,14 @@
           </div>
         </div>
         <el-form-item label="转正时间">
-          <el-input v-model="sizeForm.dateOfCorrection"> </el-input>
+          <el-date-picker
+            type="date"
+            placeholder="选择日期"
+            v-model="sizeForm.dateOfCorrection"
+            style="width: 100%"
+          ></el-date-picker>
         </el-form-item>
+
         <el-form-item label="转正评价">
           <el-input v-model="sizeForm.correctionEvaluation"></el-input>
         </el-form-item>

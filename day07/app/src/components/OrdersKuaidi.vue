@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <el-dialog v-model="dialogVisible" title="物流信息" width="50%" :before-close="closeDel">
+    <el-dialog v-model="dialogVisible" title="物流信息" width="50%" :before-close="closeDel" :close-on-click-modal="false">
       <el-timeline>
         <el-timeline-item v-for="(activity, index) in activities" :key="index" :timestamp="activity.time">
           {{ activity.context }}

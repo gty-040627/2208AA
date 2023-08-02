@@ -1,6 +1,6 @@
 <template>
   <div class="tree">
-    <el-dialog v-model="dialogVisible" title="分配权限" width="50%" >
+    <el-dialog v-model="dialogVisible" title="分配权限" width="50%" :close-on-click-modal="false">
       <el-tree :data="DataList" :props="defaultProps" show-checkbox default-expand-all node-key="id"  :default-checked-keys="DataList.id">
         <template #default="{ node, data }">
         <span class="custom-tree-node">

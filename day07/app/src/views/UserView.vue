@@ -21,8 +21,8 @@
         <el-table-column prop="mg_state" label="状态">
           <template #default="scope">
             <el-switch v-model="scope.row.mg_state" @click="changeStatus"></el-switch>
-          </template> </el-table-column
-        >
+          </template>
+        </el-table-column>
 
         <el-table-column fixed="right" label="操作" width="300px">
           <template #default="scope">
@@ -46,20 +46,18 @@
     </div>
 
     <!-- 添加弹出框 -->
-    <UserAdd v-if="OpenComponent" ref="OpenAdd" @OKK="OKK" @closeAdd="closeAdd"/>
+    <UserAdd v-if="OpenComponent" ref="OpenAdd" @OKK="OKK" @closeAdd="closeAdd" :title="title"/>
     <!-- 修改模态框 -->
-    <UserMeit v-if="OpenMeit" ref="OpenMeit" @MeitOKK="MeitOKK" :rowList="rowList" @closeMeit="closeMeit"/>
+    <UserMeit v-if="OpenMeit" ref="OpenMeit" @MeitOKK="MeitOKK" :rowList="rowList" @closeMeit="closeMeit" />
     <!-- 删除弹出框 -->
-    <UserDel v-if="OpenDel" ref="OpenDelList" @delOkk="delOkk" :id="ids" @closeDel="closeDel"/>
+    <UserDel v-if="OpenDel" ref="OpenDelList" @delOkk="delOkk" :id="ids" @closeDel="closeDel" />
     <!-- 分配角色弹出框 -->
-    <UserLook v-if="OpenLook" :LookList="LookList" @closeLook="closeLook"/>
+    <UserLook v-if="OpenLook" :LookList="LookList" @closeLook="closeLook" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, toRefs } from "vue"
-import { useStore } from "vuex"
-import { useRouter, useRoute } from "vue-router"
 import { Delete, Edit, Open, Search, Star } from "@element-plus/icons-vue"
 import * as TS from "../api/defind"
 import { ElMessage, ElMessageBox } from "element-plus"
@@ -129,9 +127,10 @@ const GetSearch = () => {
 }
 
 //添加模态框显示状态
+const title = ref('新增')
 const OpenComponent = ref(false)
-const closeAdd =()=>{
-	OpenComponent.value = false
+const closeAdd = () => {
+  OpenComponent.value = false
 }
 //点击添加按钮打开弹出框
 const AddComponent = () => {
@@ -143,25 +142,32 @@ const OpenAdd = ref()
 const OKK = () => {
   //把子组件的表单传入子组件 定义
   let GetAddList = OpenAdd.value.ruleForm
-  //添加接口
-  qsueryUserListAdd(GetAddList).then((res) => {
-    // console.log(res, "qsueryUserList")
-    GetList()
-  })
-  OpenComponent.value = false
+  if (
+    (OpenAdd.value.ruleForm.username == "" || OpenAdd.value.ruleForm.password == ""||
+    (OpenAdd.value.ruleForm.email = "" || OpenAdd.value.ruleForm.mobile == ""))
+  ) {
+    OpenComponent.value = true
+  } else {
+    //添加接口
+    qsueryUserListAdd(GetAddList).then((res) => {
+      // console.log(res, "qsueryUserList")
+      GetList()
+    })
+    OpenComponent.value = false
+  }
 }
 
 //修改模态框显示状态
 const OpenMeit = ref(false)
-const closeMeit =()=>{
-	OpenMeit.value = false
+const closeMeit = () => {
+  OpenMeit.value = false
 }
 //定义按钮 获取row的id
 const rowList = ref()
 //点击编辑按钮打开弹出框
 const Meit = (row: any) => {
-	console.log(111111);
-  console.log(row,'row')
+  console.log(111111)
+  console.log(row, "row")
   rowList.value = row
   OpenMeit.value = true
 }
@@ -178,8 +184,8 @@ const MeitOKK = () => {
 
 //点击打开删除弹出框
 const OpenDel = ref(false)
-const closeDel =()=>{
-	OpenDel.value= false
+const closeDel = () => {
+  OpenDel.value = false
 }
 //传递给子组件
 const ids = ref(0)
@@ -194,7 +200,7 @@ const delOkk = () => {
   qsueryUserListDel(ids.value).then((res) => {
     // console.log(res, "qsueryUserListDel")
     GetList()
-		ElMessage({
+    ElMessage({
       message: "删除用户成功",
       type: "success"
     })
@@ -203,8 +209,8 @@ const delOkk = () => {
 
 //控制分配角色弹出框
 const OpenLook = ref(false)
-const closeLook =()=>{
-	OpenLook.value = false
+const closeLook = () => {
+  OpenLook.value = false
 }
 //声明一个传给子组件的回填内容
 const LookList = ref()

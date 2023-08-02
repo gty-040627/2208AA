@@ -1,0 +1,3 @@
+<!--pages/one/one.wxml-->
+<text>pages/one/one.wxml</text>
+<navigator open-type="navigateBack" delta="1">返回上一级</navigator>

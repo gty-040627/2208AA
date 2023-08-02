@@ -1,0 +1,4 @@
+<view class="top">
+  <text class="texting" bindtap="login">登录</text>
+  <text class="texting" bindtap="login">注册</text>
+</view>

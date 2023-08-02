@@ -1,6 +1,6 @@
 <template>
 	<div class='goodslook'>
-		<el-dialog v-model="dialogVisible" title="编辑商品" width="50%"  :before-close="closeMeit">
+		<el-dialog v-model="dialogVisible" title="编辑商品" width="50%"  :before-close="closeMeit" :close-on-click-modal="false">
       <el-form
         ref="ruleFormRef"
         :model="ruleForm"
@@ -93,5 +93,7 @@ defineExpose({ruleForm})
 </script>
 
 <style lang='scss' scoped>
-
+.btn{
+	margin-left: 550px;
+}
 </style>

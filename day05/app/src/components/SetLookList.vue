@@ -1,6 +1,11 @@
 <template>
   <div>
-    <el-dialog title="设置" :visible.sync="dialogVisible" width="50%">
+    <el-dialog
+      title="设置"
+      :visible.sync="dialogVisible"
+      width="50%"
+      :close-on-click-modal="false"
+    >
       <el-tabs v-model="activeName">
         <el-tab-pane label="用户管理" name="first">
           <el-form ref="form" :model="form" label-width="80px">

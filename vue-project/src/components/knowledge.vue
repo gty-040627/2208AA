@@ -1,33 +1,39 @@
 <template>
   <div class="knowledge">
-    <div v-for="(item, index) in data" :key="index" class="data">
-      <div class="data-top">
-        <div><img :src="item.creatorAvatar" alt="" /></div>
-        <div>
-          <p>{{ item.creatorName }}</p>
-          <span class="title">{{ item.creatorHospatalName }} {{ item.creatorDep }}</span>
-        </div>
-        <div>
-          <span v-if="status" class="flag" @click="change">+ 关注</span>
-          <span v-else class="flag" @click="change">已关注</span>
-        </div>
-      </div>
-      <div>
-        <p class="name">{{ item.title }}</p>
-        <span class="title2" >{{ item.content }}</span>
-        <div class="images">
-          <div v-for="it in item.coverUrl">
-            <img :src="it" alt="" class="imging" />
+    <van-list
+      v-model:loading="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      @load="onLoad"
+    >
+      <div v-for="(item, index) in data" :key="index" class="data">
+        <div class="data-top">
+          <div><img :src="item.creatorAvatar" alt="" /></div>
+          <div>
+            <p>{{ item.creatorName }}</p>
+            <span class="title">{{ item.creatorHospatalName }} {{ item.creatorDep }}</span>
+          </div>
+          <div>
+            <span v-if="status" class="flag" @click="change">+ 关注</span>
+            <span v-else class="flag" @click="change">已关注</span>
           </div>
         </div>
-        <p class="love">
-          {{ item.collectionNumber }}收藏 &nbsp;&nbsp; {{ item.commentNumber }}关注
-        </p>
+        <div>
+          <p class="name">{{ item.title }}</p>
+          <span class="title2" v-html="item.content"></span>
+          <div class="images">
+            <div v-for="it in item.coverUrl">
+              <img :src="it" alt="" class="imging" />
+            </div>
+          </div>
+          <p class="love">
+            {{ item.collectionNumber }}收藏 &nbsp;&nbsp; {{ item.commentNumber }}关注
+          </p>
+        </div>
       </div>
-    </div>
+    </van-list>
   </div>
 </template>
-
 <script setup lang="ts">
 import { ref, reactive, toRefs } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
@@ -39,22 +45,37 @@ const route = useRoute()
 const pages = ref<TS.about>({
   type: 'recommend',
   current: 1,
-  pageSize: 15
+  pageSize: 5
 })
 const data = ref()
 //推荐接口
 const GetAbout = () => {
   QueryAbout(pages.value).then((res: any) => {
-    // console.log(res, 'QueryAbout')
+    console.log(res, 'QueryAbout')
     data.value = res.data.data.rows
   })
 }
 GetAbout()
 
 //关注状态
-const status =ref(true)
-const change=()=>{
-    status.value = !status.value
+const status = ref(true)
+const change = () => {
+  status.value = !status.value
+}
+
+//下拉刷新
+const loading = ref(false)
+const finished = ref(false)
+const onLoad = async () => {
+  // 加载更多
+  const res = await QueryAbout(pages.value)
+  data.value.push(...res.data.data.rows)
+  if (pages.value.current >= res.data.pageTotal) {
+    finished.value = true
+  } else {
+    pages.value.current++
+  }
+  loading.value = false
 }
 </script>
 
@@ -67,6 +88,9 @@ const change=()=>{
 .knowledge {
   width: 95%;
   margin: auto;
+}
+::v-deep .title2 img {
+  display: none;
 }
 .van-tabs {
   width: 100%;
@@ -128,7 +152,7 @@ const change=()=>{
 .title2 {
   font-size: 14px;
   color: #7d7979;
-  padding-top: 10px;
+  // padding-top: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

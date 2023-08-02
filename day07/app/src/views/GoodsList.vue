@@ -187,12 +187,22 @@ const RolesList = ref()
 //添加的确定按钮
 const AddOK = () => {
   let GetAddList = RolesList.value.ruleForm
-  console.log(GetAddList)
-  queryGoodsListAdd(GetAddList).then((res) => {
-    console.log(res, "queryRolesAdd")
-    getGoods()
-  })
-  OpenStatusAdd.value = false
+  // console.log(GetAddList)
+  if (
+    RolesList.value.ruleForm.goods_name == "" ||
+    RolesList.value.ruleForm.goods_number == "" ||
+    RolesList.value.ruleForm.goods_price == "" ||
+    RolesList.value.ruleForm.goods_weight == "" ||
+    RolesList.value.ruleForm.pics == ""
+  ) {
+    OpenStatusAdd.value = true
+  } else {
+    queryGoodsListAdd(GetAddList).then((res) => {
+      // console.log(res, "queryRolesAdd")
+      getGoods()
+      OpenStatusAdd.value = false
+    })
+  }
 }
 </script>
 

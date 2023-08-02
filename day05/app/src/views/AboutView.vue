@@ -13,7 +13,7 @@
       <div class="item2">
         <!-- 日历 -->
         <div class="ZhongLeft">
-          <div class="top-item"><p>工作日历</p></div>
+          <!-- <div class="top-item"><p>工作日历</p></div>
           <div class="dateing">
             <el-date-picker
               v-model="value"
@@ -30,7 +30,8 @@
                 <span v-if="isWeek(date)" class="rest">休</span>
               </div>
             </template>
-          </el-calendar>
+          </el-calendar> -->
+          <CalendarComp />
         </div>
         <!-- 中间右 -->
         <div class="ZhongRight">
@@ -103,6 +104,7 @@
 <script>
 import AddWord from '../components/AddWord.vue'
 import LeaveOff from '../components/LeaveOff.vue'
+import CalendarComp from '../components/CalendarComp.vue'
 export default {
   data() {
     return {
@@ -135,7 +137,8 @@ export default {
   mounted() {},
   components: {
     AddWord,
-    LeaveOff
+    LeaveOff,
+    CalendarComp
   },
   computed: {},
   watch: {}

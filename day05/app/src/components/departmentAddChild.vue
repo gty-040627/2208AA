@@ -1,6 +1,11 @@
 <template>
   <div>
-    <el-dialog title="编辑部门" :visible.sync="dialogVisible" width="50%">
+    <el-dialog
+      title="添加部门"
+      :visible.sync="dialogVisible"
+      width="50%"
+      :close-on-click-modal="false"
+    >
       <el-form ref="form" :model="form" label-width="90px">
         <el-form-item label="部门名称">
           <el-input v-model="form.name"></el-input>

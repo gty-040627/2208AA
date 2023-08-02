@@ -9,7 +9,7 @@
     />
     <div class="Bigimg"><img src="../../public/big.png" alt=""></div>
     <div class="title"><p><span>20s </span>快速匹配专业医生</p></div>
-    <div class="text">
+    <div class="text" @click="gotoAllDep">
       <div><img src="../../public/icon_14dhfnxbzsfd/jishiben.png" alt=""></div>
       <div>
         <p>三甲图文问诊<br><span>三甲主治及以上级别医生</span></p>
@@ -18,7 +18,7 @@
         >
       </div>
     </div>
-    <div class="text">
+    <div class="text" @click="gotoAllDep">
       <div><img src="../../public/icon_14dhfnxbzsfd/wuyefengcai.png" alt=""></div>
       <div>
         <p>普通图文问诊<br><span>二甲主治及以上级别医生</span></p>
@@ -44,6 +44,10 @@ const onClickLeft =()=>{
 //激素问诊
 const onClickRight=()=>{
   router.push('/list')
+}
+//跳转选择科室页面
+const gotoAllDep=()=>{
+  router.push('/alldep')
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="userlook">
-    <el-dialog v-model="dialogVisible" title="分配角色" width="50%" :before-close="closeLook">
+    <el-dialog v-model="dialogVisible" title="分配角色" width="50%" :before-close="closeLook" :close-on-click-modal="false">
       <p>当前的用户：{{ users }}</p>
       <p>当前的角色：{{ roleName }}</p>
       <el-form :model="form" label-width="120px">

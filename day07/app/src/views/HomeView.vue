@@ -64,6 +64,7 @@
             <el-breadcrumb-item>promotion detail</el-breadcrumb-item> -->
           </el-breadcrumb>
           <router-view></router-view>
+
         </el-main>
       </el-container>
     </el-container>
@@ -131,5 +132,9 @@ const ChangeMenu = () => {
 	width: 100%;
 	// height: 100vh;
 	background-color: #cccccc32;
+}
+.欢迎{
+	font-size: 22px;
+	padding: 10px;
 }
 </style>

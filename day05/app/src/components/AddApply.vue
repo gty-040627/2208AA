@@ -1,7 +1,12 @@
 <template>
   <div>
     <!-- 添加弹出框 -->
-    <el-dialog title="添加权限" :visible.sync="dialogVisible" width="50%">
+    <el-dialog
+      title="添加权限"
+      :visible.sync="dialogVisible"
+      width="50%"
+      :close-on-click-modal="false"
+    >
       <el-form ref="form" :model="sizeForm" label-width="70px">
         <el-form-item label="权限名称">
           <el-input type="type" v-model="sizeForm.name"></el-input>
@@ -62,7 +67,6 @@
         <el-form-item label="菜单icon">
           <el-input type="type" v-model="NewLookList.menuIcon"></el-input>
         </el-form-item>
-
         <el-form-item size="large" class="btn">
           <el-button type="primary">确定</el-button>
           <el-button>取消</el-button>

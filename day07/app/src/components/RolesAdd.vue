@@ -1,6 +1,6 @@
 <template>
 	<div class='rolesadd'>
-		<el-dialog v-model="dialogVisible" title="添加用户" width="50%"  :before-close="close">
+		<el-dialog v-model="dialogVisible" title="添加用户" width="50%"  :before-close="close" :close-on-click-modal="false">
       <el-form
         ref="ruleFormRef"
         :model="ruleForm"
@@ -64,5 +64,7 @@ const close =()=>{
 </script>
 
 <style lang='scss' scoped>
-
+.btn{
+	margin-left: 550px;
+}
 </style>

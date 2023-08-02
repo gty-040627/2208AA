@@ -1,0 +1,14 @@
+<image src="./乐学毛.png" mode=""/>
+
+<input type="text" placeholder="请输入手机号"
+bindinput="getPhone"/>
+<input type="text" placeholder="请输入密码"
+bindinput="getPassword"/>
+<input type="text" placeholder="请输入验证码" 
+bindinput="getImgimg"/>
+<image src="{{img}}" class="imgs" bindtap="imgng"/>
+
+
+<view class="btn">
+  <van-button type="warning" bindtap="HeaderLogin">登录</van-button>
+</view>

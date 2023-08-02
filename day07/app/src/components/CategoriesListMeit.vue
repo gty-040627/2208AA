@@ -1,6 +1,6 @@
 <template>
   <div class="CategoriesListMeit">
-    <el-dialog v-model="dialogVisible" title="编辑分类" width="50%" :before-close="closeMeit">
+    <el-dialog v-model="dialogVisible" title="编辑分类" width="50%" :before-close="closeMeit" :close-on-click-modal="false">
       <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" :size="formSize" status-icon>
         <el-form-item label="分类名称" prop="cat_name">
           <el-input v-model="ruleForm.cat_name" />
@@ -61,4 +61,8 @@ const closeMeit = () => {
 
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.btn{
+	margin-left: 550px;
+}
+</style>

@@ -1,5 +1,11 @@
 <template>
   <div class="foods">
+    <van-list
+      v-model:loading="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      @load="onLoad"
+    >
     <div v-for="(item, index) in list" :key="index" class="data">
       <div class="data-top">
         <div><img :src="item.creatorAvatar" alt="" /></div>
@@ -14,7 +20,7 @@
       </div>
       <div>
         <p class="name">{{ item.title }}</p>
-        <span class="title2" >{{ item.content }}</span>
+        <span class="title2" v-html="item.content" ></span>
         <div class="images">
           <div v-for="it in item.coverUrl">
             <img :src="it" alt="" class="imging" />
@@ -25,6 +31,7 @@
         </p>
       </div>
     </div>
+  </van-list>
   </div>
 </template>
 
@@ -32,18 +39,19 @@
 import { ref, reactive, toRefs } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { QueryFood } from '../utils/api'
+import * as TS from "../utils/defind"
 const router = useRouter()
 const route = useRoute()
-const data = reactive({
+const data = ref<TS.foods>({
   type: 'food',
   current: 1,
-  pageSize: 18
+  pageSize: 5
 })
 
 //饮食接口
 const list = ref()
 const GetFoods = () => {
-  QueryFood(data).then((res) => {
+  QueryFood(data.value).then((res) => {
     // console.log(res, 'QueryFood')
     list.value = res.data.data.rows
   })
@@ -53,6 +61,22 @@ GetFoods()
 const status =ref(true)
 const change=()=>{
     status.value = !status.value
+}
+
+
+//下拉刷新
+const loading = ref(false)
+const finished = ref(false)
+const onLoad = async () => {
+  // 加载更多
+  const res = await QueryFood(data.value)
+  list.value.push(...res.data.data.rows)
+  if (data.value.current >= res.data.pageTotal) {
+    finished.value = true
+  } else {
+    data.value.current++
+  }
+  loading.value = false
 }
 </script>
 
@@ -126,12 +150,15 @@ const change=()=>{
 .title2 {
   font-size: 14px;
   color: #7d7979;
-  padding-top: 10px;
+  // padding-top: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+::v-deep .title2 img{
+   display: none;
 }
 .love {
   height: 70px;

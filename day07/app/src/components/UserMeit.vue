@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <el-dialog v-model="dialogVisible" title="编辑用户" width="50%" :before-close="closeMeit">
+    <el-dialog v-model="dialogVisible" title="编辑用户" width="50%" :before-close="closeMeit" :close-on-click-modal="false">
       <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" :size="formSize" status-icon>
         <el-form-item label="用户名" prop="username">
           <el-input v-model="ruleForm.username" disabled />
@@ -66,4 +66,8 @@ LookList()
 defineExpose({ ruleForm })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.btn{
+	margin-left: 550px;
+}
+</style>

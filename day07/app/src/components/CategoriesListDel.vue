@@ -1,6 +1,6 @@
 <template>
 	<div class='CategoriesList'>
-		<el-dialog v-model="dialogVisible" title="提示" width="30%"  :before-close="closeDel">
+		<el-dialog v-model="dialogVisible" title="提示" width="30%"  :before-close="closeDel" :close-on-click-modal="false">
       <span> ❗ 此操作将永远删除该用户，是否继续？</span>
       <template #footer>
         <span class="dialog-footer">

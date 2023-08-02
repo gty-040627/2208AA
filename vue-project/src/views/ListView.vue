@@ -8,7 +8,7 @@
       <van-tab title="找医生"><p class="over">没有更多了</p> </van-tab>
       <van-tab title="开药问诊"> <p class="over">没有更多了</p></van-tab>
     </van-tabs>
-  </div>
+  </div> 
 </template>
 
 <script setup lang="ts">

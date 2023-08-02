@@ -23,42 +23,72 @@ const router = createRouter({
       name: 'alldep',
       component: () => import('../views/AllDep.vue')
     },
-   {
-      path:'/home',
+    {
+      path: '/illness',
+      name: 'illness',
+      component: () => import('../views/illness.vue')
+    },
+    {
+      path: '/LookUrl',
+      name: 'LookUrl',
+      component: () => import('../views/LookUrl.vue')
+    },
+    {
+      path: '/detail',
+      name: 'detail',
+      component: () => import('../views/DetailView.vue')
+    },
+    {
+      path: '/room',
+      name: 'room',
+      component: () => import('../views/RoomView.vue')
+    },
+    {
+      path: '/user',
+      name: 'user',
+      component: () => import('../views/UserView.vue')
+    },
+    {
+      path: '/payList',
+      name: 'payList',
+      component: () => import('../views/PayList.vue')
+    },
+    {
+      path: '/home',
       name: 'home',
-      redirect:'/home/about',
-      component:()=>import('../views/Home.vue'),
-      children:[
+      redirect: '/home/about',
+      component: () => import('../views/home/Home.vue'),
+      children: [
         {
-          path:'my',
+          path: 'my',
           name: 'my',
-          component:()=>import('../views/MyView.vue')
-        },{
-          path:'about',
+          component: () => import('../views/home/MyView.vue')
+        }, {
+          path: 'about',
           name: 'about',
-          component:()=>import('../views/AboutView.vue')
-        },{
-          path:'article',
+          component: () => import('../views/home/AboutView.vue')
+        }, {
+          path: 'article',
           name: 'article',
-          component:()=>import('../views/ArticleView.vue')
-        },{
-          path:'notify',
+          component: () => import('../views/home/ArticleView.vue')
+        }, {
+          path: 'notify',
           name: 'notify',
-          component:()=>import('../views/NotifyView.vue')
+          component: () => import('../views//home/NotifyView.vue')
         }
       ]
     }
   ]
 })
 
-router.beforeEach((to,from,next)=>{
+router.beforeEach((to, from, next) => {
   let token = localStorage.getItem('token')
-  if(token && to.path== '/login'){
-      next('/my')
-  }else if(!token && to.path !== '/login'){
-      next('/login')
-  }else{
-      next()
+  if (token && to.path == '/login') {
+    next('/my')
+  } else if (!token && to.path !== '/login') {
+    next('/login')
+  } else {
+    next()
   }
 })
 

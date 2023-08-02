@@ -1,0 +1,33 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/home/home",
+    "pages/list/list",
+    "pages/my/my",
+    "pages/login/login",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "乐学喵",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "选课"
+    },{
+      "pagePath": "pages/home/home",
+      "text": "我的课"
+    },{
+      "pagePath": "pages/list/list",
+      "text": "工具"
+    },{
+      "pagePath": "pages/my/my",
+      "text": "我的"
+    }]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

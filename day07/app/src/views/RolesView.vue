@@ -116,11 +116,15 @@ const RolesList = ref()
 //添加的确定按钮
 const AddOK = () => {
   let GetAddList = RolesList.value.ruleForm
-  OpenStatusAdd.value = false
-  queryRolesAdd(GetAddList).then((res) => {
-    // console.log(res, "queryRolesAdd")
-    GetRoles()
-  })
+  if (RolesList.value.ruleForm.roleName == "" || RolesList.value.ruleForm.roleDesc == "") {
+    OpenStatusAdd.value = true
+  } else {
+    queryRolesAdd(GetAddList).then((res) => {
+      // console.log(res, "queryRolesAdd")
+      GetRoles()
+      OpenStatusAdd.value = false
+    })
+  }
 }
 
 //是否打开删除弹出框

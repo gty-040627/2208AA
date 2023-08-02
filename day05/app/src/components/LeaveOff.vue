@@ -1,6 +1,11 @@
 <template>
   <div>
-    <el-dialog title="请假调休" :visible.sync="dialogVisible2" width="40%">
+    <el-dialog
+      title="请假调休"
+      :visible.sync="dialogVisible2"
+      width="40%"
+      :close-on-click-modal="false"
+    >
       <el-form ref="form" :model="sizeForm2" label-width="120px">
         <el-form-item label="假期类型">
           <el-select v-model="sizeForm2.processName">

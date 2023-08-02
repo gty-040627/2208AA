@@ -1,6 +1,11 @@
 <template>
   <div>
-    <el-dialog title="API权限列表" :visible.sync="dialogVisible" width="50%">
+    <el-dialog
+      title="API权限列表"
+      :visible.sync="dialogVisible"
+      width="50%"
+      :close-on-click-modal="false"
+    >
       <el-row>
         <el-button
           type="primary"

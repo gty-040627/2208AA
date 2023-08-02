@@ -1,6 +1,11 @@
 <template>
   <div>
-    <el-dialog title="申请" :visible.sync="dialogVisible" width="40%">
+    <el-dialog
+      title="申请"
+      :visible.sync="dialogVisible"
+      width="40%"
+      :close-on-click-modal="false"
+    >
       <el-form ref="form" :model="sizeForm" label-width="120px">
         <el-form-item label="申请类型">
           <el-select v-model="sizeForm.processName">
