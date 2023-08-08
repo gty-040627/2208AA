@@ -27,14 +27,16 @@
       </div>
       <div class="item">
         <p>此次病情是否去医院就诊过？</p>
-        <span class="spa" :style="getStyle(item)" v-for="item in timeStatus" @click="statusing(item)">{{ item.label }} </span>
+        <span
+          class="spa"
+          :style="getStyle(item)"
+          v-for="item in timeStatus"
+          @click="statusing(item)"
+          >{{ item.label }}
+        </span>
       </div>
       <div class="divimg">
-        <div class="left">
-          <img src="../../public/imgimg.png" alt="" />
-          <p>上传图片</p>
-        </div>
-        <div class="right">上传内容仅医生可见,最多9张图,最大5MB</div>
+        <van-uploader v-model="fileList" multiple />
       </div>
       <van-button type="success" @click="gotoUser">下一步</van-button>
     </div>
@@ -42,26 +44,33 @@
 </template>
 
 <script setup lang="ts">
+//@ts-nocheck
 import { ref, reactive, toRefs } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { showToast } from 'vant';
+import { showToast } from 'vant'
 const router = useRouter()
 const route = useRoute()
 const data = reactive({})
 // console.log(route.query.id,'ididididd');
-const id =ref(route.query.id)
-localStorage.setItem('id',id.value)
-
+const id = ref(route.query.id)
+localStorage.setItem('id', id.value)
 
 //返回
 const onClickLeft = () => {
   router.push('/alldep')
 }
 
-//
 const from = ref({
   illnessDesc: ''
 })
+
+//上传图片
+const fileList = ref([
+  // { url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg' },
+  // Uploader 根据文件后缀来判断是否为图片文件
+  // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
+  // { url: 'https://cloud-image', isImage: true }
+])
 
 //患病时长
 const times = ref([
@@ -71,8 +80,7 @@ const times = ref([
   { label: '大于半年', value: 4, status: false }
 ])
 
-
-//去过没去过状态
+//去过没去过状态 
 const timeStatus = ref([
   { label: '就诊过', value: 0, status: false },
   { label: '没就诊过', value: 1, status: false }
@@ -81,7 +89,7 @@ const timeStatus = ref([
 //点击患病时长
 const getStyle = (item: any) => {
   if (item.status) {
-    return { 'background': '#eaf8f6' }
+    return { background: '#eaf8f6' }
   }
 }
 const timeing = (item: any) => {
@@ -90,30 +98,28 @@ const timeing = (item: any) => {
     el.status = false
   })
   item.status = !currentState
-  localStorage.setItem('time',times.value[1].value)
+  localStorage.setItem('time', times.value[1].value)
 }
 //状态
-const statusing=(item:any)=>{
+const statusing = (item: any) => {
   let currentState = item.status
   timeStatus.value.forEach((el) => {
     el.status = false
   })
   item.status = !currentState
-  localStorage.setItem('status',timeStatus.value[0].value)
+  localStorage.setItem('status', timeStatus.value[0].value)
 }
-
 
 //接口
 const gotoUser = () => {
-  if(from.value.illnessDesc==''){
-    showToast('病情描述为空');
-  }else{
-    localStorage.setItem('text',from.value.illnessDesc)
+  if (from.value.illnessDesc == '') {
+    showToast('病情描述为空')
+  } else {
+    localStorage.setItem('text', from.value.illnessDesc)
     localStorage.getItem('time')
     localStorage.getItem('status')
     router.push('/user')
-  }  
-  
+  }
 }
 </script>
 
@@ -186,7 +192,7 @@ const gotoUser = () => {
   width: 100%;
   height: 100px;
   display: flex;
-  justify-content: space-around;
+  // justify-content: space-around;
   align-items: center;
   font-size: 14px;
   color: #8e8383;
@@ -207,10 +213,6 @@ const gotoUser = () => {
       bottom: 0px;
       left: 13px;
     }
-  }
-  .right {
-    height: 100px;
-    line-height: 100px;
   }
 }
 

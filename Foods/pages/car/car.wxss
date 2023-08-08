@@ -1,0 +1,86 @@
+/* pages/car/car.wxss */
+page {
+  background-color: #f6f0e3;
+}
+
+.van-stepper__minus--disabled,
+.van-stepper__input,
+.van-stepper__plus {
+  background-color: #f1ebdc !important;
+  border: 4rpx solid #e6d9bd !important;
+}
+
+.car {
+  width: 100%;
+}
+
+.car .data {
+  width: 100%;
+  height: 250rpx;
+  display: flex;
+  align-items: center;
+  margin: 30rpx 0;
+  border-bottom: 6rpx solid #e6dcc5;
+}
+
+.data .src {
+  width: 180rpx;
+  height: 180rpx;
+  flex-shrink: 0;
+}
+
+.data .right {
+  padding-top: 70rpx;
+  width: 100%;
+  height: 240rpx;
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* background-color: white; */
+}
+
+.data .fot {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+
+}
+
+.footer {
+  width: 100%;
+  height: 140rpx;
+  line-height: 140rpx;
+  background-color: #f6f0e3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.slit {
+  width: 100%;
+  position: fixed;
+  top: 40%;
+}
+
+.top-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  font-size: 34rpx;
+}
+
+.data {
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.del-list {
+  font-size: 34rpx;
+  float: right;
+  color: red;
+}

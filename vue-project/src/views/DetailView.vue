@@ -129,6 +129,7 @@
 </template>
 
 <script setup lang="ts">
+//@ts-nocheck
 import { ref, reactive, toRefs, computed, watchEffect } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { QueryListDetil ,QueryPay} from '../utils/api'

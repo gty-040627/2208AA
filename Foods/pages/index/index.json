@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "item-list":"/components/item-list/item"
+  },
+  "navigationBarTitleText": "未来好面"
+}

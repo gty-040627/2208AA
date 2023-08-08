@@ -14,15 +14,21 @@ image{
 }
 .imgs{
   width: 200rpx;
-  height: 150rpx;
+  height: 100rpx;
   margin-left: 20px;
 }
 input{
   width: 90%;
-  height: 80rpx;
+  height: 60rpx;
   border-radius: 10rpx;
   margin: 10rpx auto;
-  /* padding-left: 10rpx; */
   font-size: 35rpx;
+  padding: 20rpx;
   border: 1rpx solid #ccc;
+  
+}
+.imgsss{
+  width: 400rpx;
+  float: left;
+  margin-left: 20rpx;
 }

@@ -4,7 +4,7 @@
 bindinput="getPhone"/>
 <input type="text" placeholder="请输入密码"
 bindinput="getPassword"/>
-<input type="text" placeholder="请输入验证码" 
+<input type="text" placeholder="请输入验证码"  class="imgsss"
 bindinput="getImgimg"/>
 <image src="{{img}}" class="imgs" bindtap="imgng"/>
 
@@ -12,3 +12,4 @@ bindinput="getImgimg"/>
 <view class="btn">
   <van-button type="warning" bindtap="HeaderLogin">登录</van-button>
 </view>
+

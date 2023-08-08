@@ -6,12 +6,12 @@
         <p>请选择患者信息</p>
         <span>以便医生给出更准确的治疗，信息仅医生可见</span>
       </div>
-      <div class="user" v-for="item in data" :key="item.id" @click="GetUserList(item.id)">
+      <div class="user"  v-for="item in data" :key="item.id" @click="GetUserList(item.id)">
         <div class="yi">
           <span>{{ item.name }}</span> &nbsp; &nbsp;
-          <span class="num">{{ item.idCard }}</span> &nbsp; &nbsp; 
+          <span class="num">{{ item.idCard }}</span> &nbsp; &nbsp;
           <span v-if="item.defaultFlag == 1" class="greennnn"> 默认</span> <br />
-        </div>
+        </div> 
         <div class="er">
           <span>{{ item.genderValue }}</span> &nbsp; &nbsp; &nbsp;<span>{{ item.age }}</span>
         </div>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <!--  -->
-      <div class="user2" @click="AddUser">
+      <div class="user2" @click="OpenAdd">
         <van-icon name="plus" />
         <p>添加患者</p>
       </div>
@@ -30,25 +30,39 @@
       </div>
     </div>
 
-
-
-    <!-- 子组件添加患者信息 -->
-    <patientadd :showRight="showRight" :title="title"/>
+    <!-- 添加患者信息 -->
+    <patientadd
+      :showRight="showRight"
+      :title="title"
+      @onClickRight="onClickRight"
+      @onClickLeft="onClickLeft"
+      ref="adds"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, toRefs } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { QueryListUser } from '../utils/api'
-import patientadd from "../components/patientadd.vue"
+import { QueryListUser, QueryUpdateUser, QueryAddUser } from '../utils/api'
+import patientadd from '../components/patientadd.vue'
 const router = useRouter()
 const route = useRoute()
 const data = ref()
-//返回
-const onClickLeft = () => {
-  router.push('/illness')
+//关闭弹出框
+
+
+
+//给弹出框设置状态
+const showRight = ref(false)
+const title = ref('添加')
+// const showRights=ref(false)
+// 点击添加 弹出弹出框进行添加
+const OpenAdd = () => {
+  showRight.value = true
+  title.value = '添加'
 }
+
 //患者信息
 const GetUser = () => {
   QueryListUser().then((res) => {
@@ -59,26 +73,41 @@ const GetUser = () => {
 GetUser()
 
 //去到支付页面
-const gotoPay=()=>{
+const gotoPay = () => {
   router.push('/payList')
 }
 
 //点击内容传给支付页面
-const GetUserList=(id:number)=>{
+const GetUserList = (id: number) => {
   // console.log(item,'item');
-  router.push({path:'/payList',query:{id}})
-  
+  router.push({ path: '/payList', query: { id } })
 }
 
-
-//声明标题
-const title = ref('添加')
-//点击出现添加弹出框
-const showRight =ref(false)
-const AddUser =()=>{
-  showRight.value= true
-  title.value = '添加'
+//关闭弹出框
+const onClickLeft = () => {
+  showRight.value = false
 }
+// 保存
+const adds = ref()
+const onClickRight = () => {
+  // console.log(adds.value.form)
+  if (title.value == '添加') {
+    //添加的接口
+    QueryAddUser(adds.value.form).then((res) => {
+      // console.log(res,'QueryAddUser')
+    })
+    //关闭弹出框
+    showRight.value = false
+    GetUser()
+  } else {
+    //编辑接口
+    QueryUpdateUser(adds.value.form).then((res) => {
+      console.log(res,'QueryUpdateUser')
+    })
+    showRight.value = false
+  }
+}
+
 
 </script>
 
@@ -87,12 +116,13 @@ const AddUser =()=>{
   width: 100vw;
   height: 70px;
   padding-left: 20px;
+  margin-top: 60px;
   span {
     font-size: 14px;
     color: #554b4b;
   }
 }
-.user2{
+.user2 {
   width: 95%;
   height: 90px;
   margin: 15px auto;
@@ -100,10 +130,10 @@ const AddUser =()=>{
   border-radius: 10px;
   text-align: center;
   color: #16c2a3;
-  p{
+  p {
     font-size: 14px;
   }
-  .van-icon{
+  .van-icon {
     padding-top: 20px;
   }
 }
@@ -161,5 +191,13 @@ const AddUser =()=>{
   padding-left: 20px;
   height: 100px;
   line-height: 100px;
+}
+
+.van-nav-bar{
+  width: 100vw;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 </style>

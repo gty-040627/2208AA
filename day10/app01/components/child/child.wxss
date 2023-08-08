@@ -1,0 +1,9 @@
+.box{
+  width: 400rpx;
+  height: 400rpx;
+  line-height: 400rpx;
+  background-color: bisque;
+  border: 10rpx dashed blue;
+  margin: 50rpx;
+  text-align: center;
+}

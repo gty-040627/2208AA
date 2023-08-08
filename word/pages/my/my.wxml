@@ -1,4 +1,64 @@
-<view class="top">
-  <text class="texting" bindtap="login">登录</text>
-  <text class="texting" bindtap="login">注册</text>
+<view class="bigbig" >
+  <view class="top"   wx:if='{{logined==true}}'>
+    <image src="{{logins.avatar}}" mode="" class="imgs" />
+    <view>{{logins.user_nickname}}</view>
+    <image src="../../img/设置.png" mode="" class="shezhi" bindtap="togoOptions" />
+  </view>
+  <view class="top" wx:else  bindtap="togoLogins">
+    <text class="denglu">注册/登录</text>
+    <image src="../../img/设置.png" mode="" class="shezhi" />
+  </view>
+
+  <view class="nav-small">
+    <view class="nav-list">
+      <image src="../../img/订单img.png" alt="" class="small-img" />
+      <text class="texts">我的订单</text>
+      <text class="ccc">买课发快递</text>
+    </view>
+    <view class="nav-list">
+      <image src="../../img/课程img.png" alt="" class="small-img" />
+      <text class="texts">兑换课程</text>
+      <text class="ccc">兑换玛兑换课程</text>
+    </view>
+    <view class="nav-list">
+      <image src="../../img/地址img.png" alt="" class="small-img" />
+      <text class="texts">地址管理</text>
+      <text class="ccc">发货地址</text>
+    </view>
+  </view>
+  <view class="lll"></view>
+  <view class="btn-list">
+    <image src="../../img/星星.png" mode="" class="btn-img" />
+    <view class="title">我的收藏 </view>
+    <van-icon name="arrow" />
+  </view>
+  <view class="btn-list">
+    <image src="../../img/钻号.png" mode="" class="btn-img" />
+    <view class="title">我的会员 </view>
+    <van-icon name="arrow" />
+  </view>
+  <view class="btn-list">
+    <image src="../../img/钱.png" mode="" class="btn-img" />
+    <view class="title">我的优惠卷 </view>
+    <van-icon name="arrow" />
+  </view>
+  <view class="lll"></view>
+  <view class="btn-list">
+    <image src="../../img/钱.png" mode="" class="btn-img" />
+    <view class="title">我的消息 </view>
+    <van-icon name="arrow" />
+  </view>
+  <view class="btn-list">
+    <image src="../../img/地址img.png" mode="" class="btn-img" />
+    <view class="title">消息反馈 </view>
+    <van-icon name="arrow" />
+  </view>
+  <view class="lll"></view>
+
+
+
+
+
+
+
 </view>

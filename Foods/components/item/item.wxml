@@ -1,0 +1,8 @@
+<!--components/item/item.wxml-->
+<view class="item">
+      <image style="width: 100%; height: 300rpx; border-radius: 20rpx;" src="{{item.pic}}" mode=""/>
+      <view style="font-size: 32rpx; margin: 10rpx 0; padding-left: 16rpx;">
+        {{item.name}}
+      </view>
+      <text style="font-size: 32rpx; padding-left: 16rpx; color: red;">￥{{item.originalPrice}}</text>
+</view>

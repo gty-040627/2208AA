@@ -1,0 +1,6 @@
+<view style="text-align: center;" class="top">
+    <text style="font-weight: 600;">可用余额</text>
+    <view style="font-weight: 600; font-size:60rpx; color: #da3a36;">
+          {{sum}}
+    </view>
+</view>

@@ -5,13 +5,13 @@
 </view>
 
 <swiper class="swipe-item" indicator-dots>
-  <swiper-item >
+  <swiper-item>
     <view class="item">1</view>
   </swiper-item>
-  <swiper-item >
+  <swiper-item>
     <view class="item">2</view>
   </swiper-item>
-  <swiper-item >
+  <swiper-item>
     <view class="item">3</view>
   </swiper-item>
 </swiper>
@@ -22,15 +22,15 @@
   <text>{{count}}</text>
   <button bindtap="OnTop" data-text="{{222}}">按钮</button>
 </view>
-input：<input value="{{listsss}}" bindinput="inputList"/>
+input：<input value="{{listsss}}" bindinput="inputList" />
 <view>{{info}}</view>
 <view wx:for="{{list}}" wx:key="index">{{item.mag}}</view>
-<rich-text nodes="<h1 style='color:pink'>标题</h1>"/>
-<image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F0139682d-8638-49ab-9e17-51265d53397c%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1693464412&t=b61c1cbdc1ebda01da6828f50634bec4" mode="widthFix"/>
-<image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F688e8aba-ac03-484a-a801-17ff1307104d%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1693464412&t=6dbb95793c2dc6dbfe14b37bdc4bb292" mode="widthFix"/>
-<image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2Fff485b01-a3ee-4fc0-81c5-2c9f8e27c9dc%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1693464412&t=c955a3d3a0869a916d007007b05636f6" mode="widthFix"/>
-<image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F0ea91453-e86e-45ff-8703-96c75d737969%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1693464419&t=9587cb5810cd25e227b52516b3dd583b" mode="widthFix"/>
-<image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2Fef6b3bd3-57a5-4190-baeb-5576f6a89a05%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1693464643&t=82e27f7acbae604e2724c4004389b2e7" mode="widthFix"/>
+<rich-text nodes="<h1 style='color:pink'>标题</h1>" />
+<image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F0139682d-8638-49ab-9e17-51265d53397c%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1693464412&t=b61c1cbdc1ebda01da6828f50634bec4" mode="widthFix" />
+<image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F688e8aba-ac03-484a-a801-17ff1307104d%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1693464412&t=6dbb95793c2dc6dbfe14b37bdc4bb292" mode="widthFix" />
+<image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2Fff485b01-a3ee-4fc0-81c5-2c9f8e27c9dc%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1693464412&t=c955a3d3a0869a916d007007b05636f6" mode="widthFix" />
+<image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F0ea91453-e86e-45ff-8703-96c75d737969%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1693464419&t=9587cb5810cd25e227b52516b3dd583b" mode="widthFix" />
+<image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2Fef6b3bd3-57a5-4190-baeb-5576f6a89a05%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1693464643&t=82e27f7acbae604e2724c4004389b2e7" mode="widthFix" />
 
 <!-- wx:if  wx:else -->
 <view wx:if="{{type == 1}}">男</view>
@@ -55,8 +55,8 @@ input：<input value="{{listsss}}" bindinput="inputList"/>
   {{m1.toUpper(username)}}
 </view>
 <wxs module="m1">
-//转为大写
-  module.exports.toUpper = function(str){
+  //转为大写
+  module.exports.toUpper = function (str) {
     return str.toUpperCase()
   }
 </wxs>
@@ -64,4 +64,18 @@ input：<input value="{{listsss}}" bindinput="inputList"/>
 <view>
   {{m1.toLower('DDDDDDD')}}
 </view>
-<wxs src="./list.wxs" module="m1"/>
+<wxs src="./list.wxs" module="m1" />
+<text>--------------------------------------</text>
+<text-list></text-list>
+<child-list count="{{count}}" bind:sync="syncCount">
+  <!-- 单个插槽 -->
+  <view>
+    这是插入组建的单个插槽
+  </view>
+  <view slot="xiaohong">
+    这是插入组建的多个插槽
+  </view>
+  <view slot="xiaoming">
+    这是插入组建的多个插槽
+  </view>
+</child-list>

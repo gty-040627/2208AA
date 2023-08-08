@@ -1,0 +1,8 @@
+/* components/item/item.wxss */
+.item{
+  width: 340rpx;
+  height: 430rpx;
+  /* background-color: white; */
+  margin-top: 20rpx;
+  border-radius: 20rpx;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>高德地图</title>
+		<style>
+			html,
+			body,
+			#container {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+
+		<script type="text/javascript">
+			window._AMapSecurityConfig = {
+				securityJsCode: '「您申请的安全密钥」',
+			};
+		</script>
+		<script src="https://webapi.amap.com/loader.js"></script>
+		<script type="text/javascript">
+			AMapLoader.load({
+				key: '49c7e1662eca549a8c1dc5c7532c9750', // 申请好的Web端开发者Key，首次调用 load 时必填
+				version: '2.0', // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+			})
+				.then((AMap) => {
+					//实例化对象
+					const map = new AMap.Map('container');
+					// 创建信息窗体
+					const infoWindow = new AMap.InfoWindow({
+						isCustom: true, // 使用自定义窗体
+						content: '<div>去上班!</div>', // 信息窗体的内容可以是任意 html 片段
+						offset: new AMap.Pixel(16, -45),
+					});
+					const onMarkerClick = function (e) {
+						console.log(e,'40');
+						infoWindow.open(map, e.target.getPosition()); // 打开信息窗体
+						// e.target 就是被点击的 Marker
+					};
+					const marker = new AMap.Marker({
+						icon: '//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-default.png',
+						position: [116.39, 39.9], //位置
+					});
+					// //关闭消息弹出框
+					// const closeInfoWindow = function(){
+					// 	infoWindow.close()
+					// }
+
+					map.add(marker); //添加到地图
+					marker.on('click',onMarkerClick)  //绑定点击事件
+				})
+				.catch((e) => {
+					console.error(e); //加载错误提示
+				});
+			//上面显示2D的平面地图
+		</script>
+	</body>
+</html>

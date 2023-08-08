@@ -9,8 +9,8 @@
         :title="props.title"
         right-text="保存"
         left-arrow
-        @click-left="router.back('-1')"
-        @click-right="()=>emit('onClickRight')"
+        @click-left="() => emit('onClickLeft')"
+        @click-right="() => emit('onClickRight')"
       />
       <van-form @submit="onSubmit">
         <van-cell-group inset>
@@ -43,7 +43,7 @@
         默认就诊人
         <input
           type="radio"
-          id="male"          
+          id="male"
           name="gender"
           value="male"
           v-model="form.defaultFlag"
@@ -51,11 +51,9 @@
         />
       </div>
 
-      <van-sticky :offset-bottom="10" position="bottom">
-    <div class="Illness-btns" @click="()=>emit('dels')">
-        <van-button style="background-color: #dc503a;" v-if="title=='编辑'">删除</van-button>
-       </div>
-</van-sticky>
+      <div class="Illness-btns" @click="() => emit('dels')">
+        <van-button style="background-color: #dc503a" v-if="title == '编辑'">删除</van-button>
+      </div>
     </van-popup>
   </div>
 </template>
@@ -64,10 +62,10 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-const props = defineProps(['showRight','title'])
+const props = defineProps(['showRight', 'title'])
 // const genderValue=ref(0)
 // 患病多久了切换
-const btnClick = (index) => {
+const btnClick = (index: any) => {
   console.log(index, 'index')
   form.value.gender = index
 }
@@ -75,29 +73,28 @@ const form = ref({
   defaultFlag: 0,
   name: '',
   idCard: '',
-  gender: 0,
+  gender: 0
   // id:''
 })
-const onSubmit = (values) => {
+const onSubmit = (values: any) => {
   console.log('submit', values)
 }
 // 身份证号校验
 const pattern =
   /^\d{6}((((((19|20)\d{2})(0[13-9]|1[012])(0[1-9]|[12]\d|30))|(((19|20)\d{2})(0[13578]|1[02])31)|((19|20)\d{2})02(0[1-9]|1\d|2[0-8])|((((19|20)([13579][26]|[2468][048]|0[48]))|(2000))0229))\d{3})|((((\d{2})(0[13-9]|1[012])(0[1-9]|[12]\d|30))|((\d{2})(0[13578]|1[02])31)|((\d{2})02(0[1-9]|1\d|2[0-8]))|(([13579][26]|[2468][048]|0[048])0229))\d{2}))(\d|X|x)$/
 
-  const emit=defineEmits(['onClickRight','dels'])
-  const formrow=(item)=>{
-	console.log(item,'4444444444');
-  form.value.defaultFlag=item.defaultFlag
-  form.value.name=item.name
-  form.value.idCard=item.idCard
-  form.value.gender=item.gender
-  form.value.id=item.id
+const emit = defineEmits(['onClickRight', 'dels', 'onClickLeft'])
 
+const formrow = (item: any) => {
+  console.log(item, '4444444444')
+  form.value.defaultFlag = item.defaultFlag
+  form.value.name = item.name
+  form.value.idCard = item.idCard
+  form.value.gender = item.gender
+  form.value.id = item.id
 }
 
-
-// 保存
+// 导出，父组件接收
 defineExpose({
   form,
   formrow
@@ -105,7 +102,18 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
-.Bigadd{
+.Bigadd {
+  width: 100vw;
+  height: 100vh;
+}
+.van-nav-bar {
+  width: 100vw;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.van-popup {
   width: 100vw;
   height: 100vh;
 }

@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "text-list":"../../components/test/test",
+    "child-list":"../../components/child/child"
+  }
+  
 }

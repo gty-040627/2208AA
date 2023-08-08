@@ -1,0 +1,28 @@
+<view class="btn-list">
+  <view class="title">跟换绑定手机号 </view>
+  <view class="ccc">
+    <text>{{logins.mobile}}</text>
+    <van-icon name="arrow" />
+  </view>
+</view>
+<view class="btn-list">
+  <view class="title">设置密码 </view>
+  <view class="ccc">
+    <van-icon name="arrow" />
+  </view>
+</view>
+<view class="btn-list">
+  <view class="title">关于我们 </view>
+  <view class="ccc">
+    <van-icon name="arrow" />
+  </view>
+</view>
+<view class="btn-list">
+  <view class="title">上课短信通知 </view>
+  <view class="ccc">
+    <van-switch checked="{{ checked }}" bind:change="onChange" />
+  </view>
+</view>
+
+
+<van-button type="warning" plain  bindtap="togoLogin">退出登录</van-button>

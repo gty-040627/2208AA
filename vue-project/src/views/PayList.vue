@@ -78,13 +78,16 @@
 </template>
 
 <script setup lang="ts">
+//@ts-nocheck
 import { ref, reactive, toRefs } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { QueryPayList, getPay ,QueryPay , getPayList} from '../utils/api'
+import { QueryPayList, getPay, QueryPay, getPayList } from '../utils/api'
 import * as TS from '../utils/defind'
 import { showToast } from 'vant'
 const router = useRouter()
 const route = useRoute()
+// console.log(route.query.item,'route.query.item');
+
 //返回
 const onClickLeft = () => {
   router.push('/user')
@@ -94,7 +97,6 @@ const types = ref<TS.payList>({
   type: 2,
   illnessType: 1
 })
-
 
 const list = ref()
 const GetList = () => {
@@ -118,28 +120,24 @@ getPay(ids).then((res) => {
   data.value = res.data.data
 })
 
-
 //控制面板
 const show = ref(false)
 //点击微信复选框
-const weixin=()=>{
-  showToast('不支持该支付方式');
+const weixin = () => {
+  showToast('不支持该支付方式')
 }
 
 //获取信息
-const text =ref(localStorage.getItem('text') )
+const text = ref(localStorage.getItem('text'))
 const time = ref(JSON.parse(localStorage.getItem('time')))
-const status =ref(JSON.parse(localStorage.getItem('status')) )
-const id =ref(localStorage.getItem('id') )
+const status = ref(JSON.parse(localStorage.getItem('status')))
+const id = ref(localStorage.getItem('id'))
 const iddd = ref(route.query.id)
 
 // console.log(iddd.value);
 
-
-
-
 const paysData = ref<TS.payList2>({
-  consultFlag:'',
+  consultFlag: '',
   couponId: null,
   depId: '',
   illnessDesc: '',
@@ -151,37 +149,38 @@ const paysData = ref<TS.payList2>({
 })
 
 //点击支付按钮
+const DatsId = ref()
 const OnPay = () => {
   if (checked.value == false) {
     showToast('请勾选我已同意')
   } else {
     //打开支付方式
     show.value = true
-    paysData.value.illnessTime= time.value 
-    paysData.value.illnessDesc= text.value 
-    paysData.value.consultFlag= status.value
-    paysData.value.depId= id.value
-    paysData.value.patientId= iddd.value
-    getPayList(paysData.value).then(res=>{
-      console.log(res,'getPayList');
+    paysData.value.illnessTime = time.value
+    paysData.value.illnessDesc = text.value
+    paysData.value.consultFlag = status.value
+    paysData.value.depId = id.value
+    paysData.value.patientId = iddd.value
+    getPayList(paysData.value).then((res) => {
+      console.log(res, 'getPayList')
+      DatsId.value = res.data.data.id
     })
   }
 }
 
-
 //支付
-const payList =ref<TS.pay> ({
+const payList = ref<TS.pay>({
   orderId: '',
-  payCallback: "http://127.0.0.1:5173/list",
-  paymentMethod: '1',
+  payCallback: 'http://127.0.0.1:5173/list',
+  paymentMethod: '1'
 })
 //点击支付按钮
-const GetPay=()=>{
-  payList.value.orderId =data.value.id
-  console.log(payList.value);
-  QueryPay(payList.value).then(res=>{
-    console.log(res,'QueryPay');
-    // location.href = res.data.data.payUrl
+const GetPay = () => {
+  payList.value.orderId = DatsId.value
+  console.log(payList.value)
+  QueryPay(payList.value).then((res) => {
+    console.log(res, 'QueryPay')
+    location.href = res.data.data.payUrl
   })
 }
 </script>

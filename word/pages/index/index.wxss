@@ -1,18 +1,20 @@
 .big{
-  background-color: #cccccc31;
+  background-color: #cccccc27;
 }
 .navber{
   white-space: nowrap;
   width: 100%;
   height: 80rpx;
   background-color: #fff;
-  /* margin-bottom: 20rpx; */
+}
+.navber text{
+  padding-left: 30rpx;
 }
 .navber-item{
-  padding: 0 20rpx;
+  padding-left: 30rpx;
 }
+
 swiper{
-  margin-top: 40rpx;
   width: 100%;
   height: 400rpx;
 }
@@ -32,17 +34,17 @@ swiper swiper-item image{
   background-color: #fff;
   margin: 0 auto;
   border-radius: 60rpx;
+  display: flex;
 }
 .lll image{
   width: 200rpx;
   height: 70rpx;
   line-height: 80rpx;
-  padding-left: 50rpx;
+  margin-top: 20rpx;
 }
 .lll text{
-  /* padding-bottom: 20rpx; */
-  font-size: 35rpx;
-  /* padding-top: -50rpx; */
+  font-size: 30rpx;
+  padding-top: 35rpx;
 }
 .yyy{
   width: 100%;
@@ -54,7 +56,7 @@ swiper swiper-item image{
 .list{
   width: 95%;
   border-radius: 20rpx;
-  height: 700rpx;
+  height: 600rpx;
   background-color: #fff;
   margin: 40rpx auto;
 }
@@ -104,4 +106,45 @@ swiper swiper-item image{
   color: red;
   font-size: 40rpx;
   padding-left: 30rpx;
+}
+
+.navBox {
+  /* tab整体样式 */
+  width: 100%;
+  white-space: nowrap;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 18rpx solid rgb(243, 244, 249);
+}
+
+.fontColorBox {
+  /* 选中tab样式 */
+  color: #f15a24;
+  font-weight: 500;
+}
+.titleBox {
+  /* 未选中tab样式 */
+  color: rgb(168, 170, 175);
+  font-size: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lineBox {
+  /* 线条样式 */
+  width: 120rpx;
+  height: 8rpx;
+  background: #f15a24;
+  margin-top: 10rpx;
+  border-radius: 4rpx;
+}
+
+.swiperTtemBox {
+  /* 内容样式 */
+  padding: 16rpx;
+  font-size: 28rpx;
+  height: calc(100vh - 150rpx);
 }

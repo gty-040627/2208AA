@@ -1,0 +1,4 @@
+/* pages/cate/cate.wxss */
+page{
+  background-color: #f6f0e3;
+}

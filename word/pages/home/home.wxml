@@ -1,2 +1,21 @@
 <!--pages/home/home.wxml-->
 <text>pages/home/home.wxml</text>
+<view class="navBox" >
+  <view  class="titleBox" wx:for="{{tabList}}" bindtap="tabsOn" data-idx="{{item.index}}">
+    <text class="{{item.index == tabsId ? 'fontColorBox' : ''}}">{{item.title}}</text>
+    <hr class="{{item.index == tabsId ? 'lineBox' : ''}}" />
+  </view>
+</view>
+<!-- 内容布局 -->
+<swiper class="swiperTtemBox" bindchange="slideOn" current="{{tabsId}}" circular>
+  <!-- circular 启用循环滑动 -->
+  <swiper-item>
+    <view>装备内容</view>
+  </swiper-item>
+  <swiper-item>
+    <view>活动内容</view>
+  </swiper-item>
+  <swiper-item>
+    <view>功能内容</view>
+  </swiper-item>
+</swiper>

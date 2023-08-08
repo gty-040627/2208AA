@@ -1,0 +1,16 @@
+<!--pages/detail/detail.wxml-->
+<view class="title">
+  {{obj.name}}
+</view>
+<image class="src" mode="widthFix" src="{{obj.pic}}" mode="" />
+<view class="money">
+  ￥ {{obj.originalPrice}}
+</view>
+<view class="numjj">
+  <text>购买数量</text>
+  <van-stepper value="{{ num }}" bind:change="onChange" />
+</view>
+<view class="fot">
+  <button type="primary" bindtap="tocar">去结算</button>
+  <button style="background-color: #e03a36; color: white;" bindtap="add">加入购物车</button>
+</view>

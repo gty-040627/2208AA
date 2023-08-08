@@ -68,4 +68,11 @@ interface payList2 {
   type: number
 }
 
-export type { Login, about, pages, foods, like, list, listDel, detsil, pay, payList ,payList2 } 
+interface Adduser {
+  defaultFlag: number
+  gender: number
+  idCard: string
+  name:string
+}
+
+export type { Login, about, pages, foods, like, list, listDel, detsil, pay, payList, payList2 ,Adduser}

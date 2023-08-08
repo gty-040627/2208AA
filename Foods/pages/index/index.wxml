@@ -1,0 +1,37 @@
+<!-- 轮播图 -->
+<swiper autoplay="true" indicator-dots="true" circular="true" indicator-color="#ccc" indicator-active-color="#fff">
+  <swiper-item wx:for="{{bnner}}" wx:key="*this">
+    <image style="height: 350rpx;" src="{{item.picUrl}}" mode="" />
+  </swiper-item>
+</swiper>
+
+<!-- 地址信息 -->
+<view class="address" wx:for="{{nav}}">
+  <view class="box" >南山路店</view>
+  <view class="boxx">
+    <view><van-icon name="award-o" />
+    <text>{{item.address}}</text> </view>
+    <text class="ccc">地图 > </text>
+  </view>
+  <view class="boxx">
+    <view> <van-icon name="underway-o" />
+    <text>营业时间</text> </view>
+    <text class="ccc">{{item.openingHours}}</text>
+  </view>
+  <view class="boxx">
+   <view>
+    <van-icon name="phone-o" />
+    <text>联系电话</text>
+   </view>
+    <text class="ccc">{{item.linkPhone}}</text>
+  </view>
+</view>
+
+<!-- 店家推荐 -->
+<view class="title">
+  店家推荐
+</view>
+
+<view class="list">
+  <item-list bindtap="todetail" data-item="{{item}}" wx:for="{{list}}" wx:key="index" item="{{item}}"></item-list>
+</view>

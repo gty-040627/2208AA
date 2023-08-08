@@ -30,7 +30,8 @@ Page({
         name:'王五',
         age:30
       },
-    ]
+    ],
+    
   },
   //count++
   OnTop(e) {
@@ -56,6 +57,13 @@ Page({
   inputList(e) {
     console.log(e, 'input');
     console.log(e.detail.value, 'input');
+  },
+  syncCount(e){
+    //  console.log('syncCount');
+    console.log(e.detail.value);
+    this.setData({
+      type: e.detail.value
+    })
   },
   /**
    * 生命周期函数--监听页面加载

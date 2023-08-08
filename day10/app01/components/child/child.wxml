@@ -1,0 +1,32 @@
+<view class="box">
+  child的子组件
+  <!-- 监听单个对象的变化 -->
+</view>
+<!--  -->
+<view>
+  {{n1}}+{{n2}} = {{n3}}
+</view>
+<button size="mini" bindtap="addN1">n1自增</button>
+<button size="mini" bindtap="addN2">n2自增</button>
+
+<view>
+  我是组建的单个插槽
+</view>
+<slot></slot>
+
+<slot name="xiaohong"></slot>
+<slot name="xiaoming"></slot>
+
+<view>
+  type: {{type}}
+</view>
+<button bindtap="addCount">+1</button>
+
+
+<button bindtap="Onbehaviors">调用behaviors数据</button>
+<van-button type="default">默认按钮</van-button>
+<van-button type="primary">主要按钮</van-button>
+<van-button type="info">信息按钮</van-button>
+<van-button type="warning">警告按钮</van-button>
+<van-button type="danger">危险按钮</van-button>
+

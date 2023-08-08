@@ -1,1 +1,41 @@
 /* pages/home/home.wxss */
+.navBox {
+  /* tab整体样式 */
+  width: 100%;
+  white-space: nowrap;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 18rpx solid rgb(243, 244, 249);
+}
+
+.fontColorBox {
+  /* 选中tab样式 */
+  color: #f15a24;
+  font-weight: 500;
+}
+.titleBox {
+  /* 未选中tab样式 */
+  color: rgb(168, 170, 175);
+  font-size: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lineBox {
+  /* 线条样式 */
+  width: 120rpx;
+  height: 8rpx;
+  background: #f15a24;
+  margin-top: 10rpx;
+  border-radius: 4rpx;
+}
+
+.swiperTtemBox {
+  /* 内容样式 */
+  padding: 16rpx;
+  font-size: 28rpx;
+  height: calc(100vh - 150rpx);
+}

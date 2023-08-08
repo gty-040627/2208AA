@@ -15,7 +15,8 @@ Page({
       device_id: '1', //加上不用管
       device_type: '2' //加上不用管
     },
-    img: ''
+    img: '',
+    LoginList:{}
   },
   //验证码
   getImg() {
@@ -64,8 +65,14 @@ Page({
       data: this.data.from,
       success:(res)=>{
         console.log(res);
+        this.setData({
+          LoginList:res.data.data
+        })
+        wx.setStorageSync('LoginList', this.data.LoginList)
         if(res.data.code==200){
-          console.log('登陆成功');
+          wx.showToast({
+            title: '登录成功',
+          })
           wx.switchTab({
             url: '/pages/index/index',
           })

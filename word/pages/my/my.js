@@ -5,19 +5,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    logins:{},
+    logined:true		//用于控制哪个view视图展现在界面上
   },
   login(){
     wx.navigateTo({
       url: '/pages/login/login',
     })
   },
-
+  togoLogins(){
+     wx.navigateTo({
+       url: '/pages/login/login',
+     })
+  },
+  //获取登录头像用户名
+  GetLoginList(){
+    let list =  wx.getStorageSync('LoginList')
+    // console.log(list,'list');
+    this.setData({
+      logins:list
+    })
+    //改变登录状态
+    this.setData({
+      logined:true
+    })
+  },
+  //跳转设置页面
+  togoOptions(){
+    wx.navigateTo({
+      url: '/pages/options/options',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.GetLoginList()
   },
 
   /**

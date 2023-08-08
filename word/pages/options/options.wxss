@@ -1,0 +1,19 @@
+.btn-list{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 2rpx solid rgb(236, 234, 234);
+}
+.title{
+  padding-left: 20rpx;
+}
+.ccc{
+  color: #ccc;
+}
+.van-button{
+  width: 90vw;
+  margin: 200rpx 40rpx;
+}
