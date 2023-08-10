@@ -1,0 +1,5 @@
+<swiper autoplay="true" indicator-dots="true" circular="true" indicator-color="#ccc" indicator-active-color="#fff">
+  <swiper-item >
+    <image style="height: 350rpx;" src="{{item.picUrl}}" mode="" />
+  </swiper-item>
+</swiper>

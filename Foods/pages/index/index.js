@@ -14,8 +14,8 @@ Page({
   todetail(e){
       let {item}=e.currentTarget.dataset
       // console.log(item);
-          wx.redirectTo({
-            url: '/pages/detail/detail?obj='+encodeURIComponent(JSON.stringify(item)),
+          wx.navigateTo({
+            url: '/pages/detail/detail?obj='+encodeURIComponent(JSON.stringify(item))
           })
   },
   /**
@@ -26,15 +26,17 @@ Page({
     this.navlist()
     this.getlist()
   },
+  //轮播图
   bnnerlist(){
-      http({
-        url:'/banner/list'
-      }).then(res=>{
-          this.setData({
-            bnner:res.data
-          })
-      })
-  },
+    http({
+      url:'/banner/list'
+    }).then(res=>{
+        this.setData({
+          bnner:res.data
+        })
+    })
+},
+  //nav 详情内容
   navlist(){
       http({
         url:'/shop/subshop/list'
@@ -45,12 +47,13 @@ Page({
           })
       })
   },
+  //获取接口食品店家推荐
   getlist(){
         http({
-            url:'/shop/goods/list?recommendStatus='+1,
+            url:'/shop/goods/list',
             method:"POST"
         }).then(res=>{
-            // console.log(res.data);
+            // console.log(res,'res');
             this.setData({
               list:res.data
             })

@@ -1,7 +1,7 @@
 <view class="big">
   <scroll-view scroll-x="true" class="navber" >
     <!-- <text class="navber-item">精选</text> -->
-    <text wx:for="{{navber}}" wx:key="{{item.id}}"   data-id="{{item.id}}"class="{{item.id == tabsId ? 'fontColorBox' : ''}}" bindtap="tabsOn">{{item.title}}</text>
+    <text wx:for="{{navber}}" wx:key="{{item.id}}"   data-id="{{item.id}}" class="{{item.id == tabsId ? 'fontColorBox' : ''}}" bindtap="tabsOn">{{item.title}}</text>
     <hr class="{{item.id == tabsId ? 'lineBox' : ''}}" />
   </scroll-view>
 

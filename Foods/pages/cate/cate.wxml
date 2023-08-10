@@ -1,2 +1,39 @@
-<!--pages/cate/cate.wxml-->
+<view class="big">
 
+  <!-- 侧边栏 -->
+  <view class="categoryList">
+    <view wx:for="{{category}}" data-id="{{item.id}}" bindtap="Oncategory" class="{{item.id == activeKey ? 'HoverBg' : ''}}">
+      {{item.name}}
+    </view>
+  </view>
+
+  <!-- 右侧内容 -->
+  <view class="rightList">
+    <view class="title">汤面</view>
+    <view wx:for="{{GoodList2}}" class="lists" bindtap="GoDetile" data-item="{{item}}">
+      <view>
+        <image src="{{item.pic}}" mode="" class="imgsss"/>
+      </view>
+      <view>
+        <view class="name">{{item.name}}</view>
+        <view class="price">￥ {{item.originalPrice}}</view>
+      </view>
+    </view>
+    <view class="title">盖浇面</view>
+    <view wx:for="{{GoodList1}}" class="lists">
+      <view>
+        <image src="{{item.pic}}" mode="" class="imgsss"/>
+      </view>
+      <view>
+        <view class="name">{{item.name}}</view>
+        <view class="price">￥ {{item.originalPrice}}</view>
+      </view>
+    </view>
+    <view class="title">加料</view>
+    <view class="title">饮料</view>
+  </view>
+
+
+
+
+</view>

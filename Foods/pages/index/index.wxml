@@ -1,9 +1,5 @@
-<!-- 轮播图 -->
-<swiper autoplay="true" indicator-dots="true" circular="true" indicator-color="#ccc" indicator-active-color="#fff">
-  <swiper-item wx:for="{{bnner}}" wx:key="*this">
-    <image style="height: 350rpx;" src="{{item.picUrl}}" mode="" />
-  </swiper-item>
-</swiper>
+<!-- 轮播图子组件 -->
+<swiper-list wx:for="{{bnner}}" wx:key="index" data-item="{{item}}" item="{{item}}"></swiper-list>
 
 <!-- 地址信息 -->
 <view class="address" wx:for="{{nav}}">
@@ -27,11 +23,11 @@
   </view>
 </view>
 
-<!-- 店家推荐 -->
 <view class="title">
   店家推荐
 </view>
 
+<!-- 店家推荐子组件 -->
 <view class="list">
   <item-list bindtap="todetail" data-item="{{item}}" wx:for="{{list}}" wx:key="index" item="{{item}}"></item-list>
 </view>

@@ -84,3 +84,43 @@ page {
   float: right;
   color: red;
 }
+
+.big {
+  color: #e03a36;
+}
+
+.btn {
+  display: block;
+  height: 100%;
+  width: 200rpx;
+  background-color: #e03a36;
+  text-align: center;
+  color: white;
+  font-size: 38rpx;
+  margin-left: 20rpx;
+}
+
+.bunred {
+  text-align: center;
+  font-size: 32rpx;
+  color: #8d8a86;
+  display: block;
+  margin: 30rpx 0;
+}
+
+.btttn {
+  width: 700rpx;
+  background-color: #e03a36;
+  color: white;
+}
+
+.all {
+  padding-left: 50rpx;
+}
+
+.bunred {
+  font-size: 32rpx;
+  color: #8d8a86;
+  display: block;
+  margin: 30rpx 0;
+}

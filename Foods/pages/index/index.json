@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "item-list":"/components/item-list/item"
+    "item-list":"/components/item-list/item",
+    "swiper-list":"/components/swiper-list/list"
   },
   "navigationBarTitleText": "未来好面"
 }

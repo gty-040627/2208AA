@@ -11,14 +11,37 @@
 				width: 100%;
 				height: 100%;
 			}
+
+			.btn {
+				position: absolute;
+				top: 50px;
+				display: inline-block;
+				width: 100px;
+				height: 50px;
+				border: 0;
+				background-color: aquamarine;
+			}
+
+			.amap-info-contentContainer {
+				width: 300px;
+				height: 200px;
+				background-color: #fff;
+				border-radius: 15px;
+				padding: 20px;
+			}
 		</style>
+		<!-- 多边形的绘制 -->
+		 <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+		 <script src="https://a.amap.com/jsapi_demos/static/geojson/shanghai.js"></script>
+		 <script src="https://webapi.amap.com/maps?v=2.0&key=您申请的key值"></script>
+		 <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
 	</head>
+
 	<body>
 		<div id="container"></div>
-
 		<script type="text/javascript">
 			window._AMapSecurityConfig = {
-				securityJsCode: '「您申请的安全密钥」',
+				securityJsCode: 'ce4ffaf5f925a49ed2a1f8dafba723a9',
 			};
 		</script>
 		<script src="https://webapi.amap.com/loader.js"></script>
@@ -29,32 +52,126 @@
 			})
 				.then((AMap) => {
 					//实例化对象
-					const map = new AMap.Map('container');
+					const map = new AMap.Map('container', {
+						//多边形的绘制
+						center: [121.045332, 31.19884],
+						zoom: 8.8,
+					});
+					//多边形的绘制
+					function addPolygon(data) {
+						let polygon = new AMap.Polygon({
+							path: data,
+							fillColor: '#ccebc5',
+							strokeOpacity: 1,
+							fillOpacity: 0.5,
+							strokeColor: '#2b8cbe',
+							strokeWeight: 1,
+							strokeStyle: 'dashed',
+							strokeDasharray: [5, 5],
+						});
+						polygon.on('mouseover', () => {
+							polygon.setOptions({
+								fillOpacity: 0.7,
+								fillColor: '#7bccc4',
+							});
+						});
+						polygon.on('mouseout', () => {
+							polygon.setOptions({
+								fillOpacity: 0.5,
+								fillColor: '#ccebc5',
+							});
+						});
+						map.add(polygon);
+					}
+					addPolygon(shanghai);
+					addPolygon(suzhou);
+					addPolygon(wuxi);
+
+					//弹出框的内容
+					var content = [
+						'<div>去上班!</div>',
+						'<div>加油!</div>',
+						'<div>经纬度:<span id="GetOpitons"></span></div>',
+						'<div>详细地址:<span id="Getaddress"></span></div>',
+					];
 					// 创建信息窗体
 					const infoWindow = new AMap.InfoWindow({
 						isCustom: true, // 使用自定义窗体
-						content: '<div>去上班!</div>', // 信息窗体的内容可以是任意 html 片段
+						content: content, // 信息窗体的内容可以是任意 html 片段
 						offset: new AMap.Pixel(16, -45),
 					});
-					const onMarkerClick = function (e) {
-						console.log(e,'40');
-						infoWindow.open(map, e.target.getPosition()); // 打开信息窗体
-						// e.target 就是被点击的 Marker
-					};
-					const marker = new AMap.Marker({
-						icon: '//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-default.png',
-						position: [116.39, 39.9], //位置
-					});
-					// //关闭消息弹出框
-					// const closeInfoWindow = function(){
-					// 	infoWindow.close()
-					// }
 
-					map.add(marker); //添加到地图
-					marker.on('click',onMarkerClick)  //绑定点击事件
+					//获取详细地址
+					const Getress = function (e) {
+						infoWindow.open(map, e.target.getPosition());
+						console.log(e, 'eeee');
+
+						AMap.plugin('AMap.Geocoder', function () {
+							var geocoder = new AMap.Geocoder();
+							var lnglat = [e.lnglat.lng, e.lnglat.lat];
+							// console.log(lnglat,'lnglat')   //经纬度
+							geocoder.getAddress(lnglat, function (status, result) {
+								// console.log(status, 'status');
+								// console.log(result, 'result');
+								if (status === 'complete' && result.info === 'OK') {
+									// result中对应详细地理坐标信息
+									document.getElementById('Getaddress').innerText =
+										result.regeocode.formattedAddress;
+								}
+							});
+						});
+					};
+
+					//在起点点击图标
+					const icon = new AMap.Icon({
+						image: './img/xin.webp',
+						size: new AMap.Size(22, 28), //图标所造区域的大小
+						imageSize: new AMap.Size(22, 18), //图标大小
+					});
+					const marker = new AMap.Marker({
+						//图标改变 icon
+						icon: icon,
+						position: [115.47146, 38.87999], //位置
+					});
+					const markers = new AMap.Marker({
+						// icon: '//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-default.png',
+						position: [122.25052, 43.65798], //位置
+					});
+					//河北保定  经纬度：115.47146 , 38.87999
+					//内蒙通辽 经纬度：122.25052 , 43.65798
+					//宁夏 吴忠 经纬度：106.20537 , 38.00371
+					//河南 经纬度：113.75938 , 34.77171
+
+					const lineArr = [
+						[115.47146, 38.87999],
+						[122.25052, 43.65798],
+						[106.20537, 38.00371],
+						[113.75938, 34.77171],
+					];
+					const polyline = new AMap.Polyline({
+						path: lineArr, // 设置线覆盖物路径
+						strokeColor: '#3366FF', // 线颜色
+						strokeWeight: 5, // 线宽
+						strokeStyle: 'solid', // 线样式
+					});
+					map.add(polyline);
+
+					// //关闭消息弹出框
+					const closeInfoWindow = function () {
+						infoWindow.close();
+					};
+					const OnMapClose = function (e) {
+						// console.log(e, 'close');
+						infoWindow.close();
+					};
+					map.on('click', OnMapClose);
+					marker.on('click', Getress); //绑定点击事件
+					map.add([marker, markers]); //添加到地图
+					// console.log(document.getElementsByClassName('.closeInfo'));
 				})
 				.catch((e) => {
-					console.error(e); //加载错误提示
+					console.log(e);
+					// console.error(e); //加载错误提示
 				});
 			//上面显示2D的平面地图
 		</script>

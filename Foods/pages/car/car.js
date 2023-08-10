@@ -13,17 +13,19 @@ Page({
   },
   //改变复选框
   onChange(event) {
+    console.log(event);
     this.setData({
       checked: event.detail,
     });
   },
   //改变全选复选框
   onChange2(event) {
+    console.log(event,'event');
     this.setData({
       AllCheck: event.detail,
     });
   },
-  //
+  //编辑按钮
   complite() {
     this.setData({
       flag: !this.data.flag
@@ -43,6 +45,24 @@ Page({
     })
     this.computed()
   },
+  //vant删除
+  onClose(event) {
+    const { position, instance } = event.detail;
+    switch (position) {
+      case 'left':
+      case 'cell':
+        instance.close();
+        break;
+      case 'right':
+        Dialog.confirm({
+          message: '确定删除吗？',
+        }).then(() => {
+          instance.close();
+        });
+        break;
+    }
+  },
+
   computed() {
     let {
       gloableData,

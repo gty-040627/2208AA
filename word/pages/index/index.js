@@ -12,7 +12,7 @@ Page({
   },
   //点击tab时触发
   tabsOn(e) {
-    // console.log(e,'eeee');
+    console.log(e,'eeee');
     this.setData({
       //拿到当前索引并动态改变
       tabsId: e.currentTarget.dataset.id

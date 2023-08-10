@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>驾车路线规划</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%
+        }
+
+        #container {
+            width: 80%;
+            height: 80%;
+        }
+    </style>
+    <style type="text/css">
+        #panel {
+            position: fixed;
+            background-color: white;
+            max-height: 90%;
+            overflow-y: auto;
+            top: 10px;
+            right: 10px;
+            width: 280px;
+        }
+
+        #panel .amap-call {
+            background-color: #009cf9;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        #panel .amap-lib-driving {
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 放置实例化地图 -->
+    <div id="container"></div>
+    <!-- 写一个放置路径的dom元素 -->
+    <div id="panels"></div>
+</body>
+<!-- 安全秘钥.有一些权限的标识,
+    项目难点: 当没有写安全秘钥的时候,逆地理编码不能使用
+    涉及到个人隐私的时候能否使用
+-->
+<script type="text/javascript">
+    window._AMapSecurityConfig={
+        securityJsCode: "50e0d13870d70086472fec7a02d728b1",
+    }
+</script>
+<!-- 用的是高德地图提供的loader进行代码编写 -->
+<script src="https://webapi.amap.com/loader.js"></script>
+<script>
+
+    AMapLoader.load({
+        key: '7901c58e80d4a460b6540108868c34c8',
+        version: '2.0'
+    }).then((AMap) => {
+        const mapssss=new AMap.Map('container',{
+            viewMode: '2D',
+            center: [116.387175,39.876405],
+            zoom: 13,
+            //center: [106.296789,38.739907] // 不写center默认是北京故宫
+        })
+        const xianlu=function() {   // 确认规划路线的起点和终点
+            const points=[
+                {keyword: '沙河站',city: '北京'},
+                {keyword: '亦庄文化园（地铁站）',city: '北京'}
+            ]
+
+            AMap.plugin(['AMap.Driving'],function() {
+                //驾车规则实例化函数后的名称
+                const drivinsg=new AMap.Driving({
+                    map: mapssss, // 声明的地图名称
+                    panel: "panels"  // 是DOM元素放置显示路径的id panel:面板
+                })
+                // 调用驾车查询方法,
+                // 逆地理编码---status  返回的也是complete
+                // 高德地图的返回状态  成功都是complete ,失败是error
+                /***
+                 * 逆地理插件: AMap.plugin('')
+                 * 矩形编辑插件
+                 * 
+                */
+                drivinsg.search(points,function(status,result) {
+                    if(status==='complete') {
+                        console.log('绘制驾车路线完成')
+                    } else {
+                        console.log('获取驾车数据失败：'+result)
+                    }
+                });
+            })
+
+        }
+        xianlu()
+
+    })
+
+</script>
+<script>
+</script>
+</html>

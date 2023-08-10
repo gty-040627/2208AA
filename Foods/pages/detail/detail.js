@@ -9,26 +9,27 @@ Page({
     num: 0,
     gloableData: wx.getStorageSync('gloableData') || []
   },
+  //计步器++
   onChange() {
-    console.log('1');
     this.data.num++
     this.setData({
       num: this.data.num
     })
   },
+  //加入购物车
   add() {
-    let {
-      obj,
-      num,
-      gloableData
-    } = this.data
+    let {obj,num,gloableData} = this.data
     gloableData.push({
       ...obj,
       num: num,
       flag: false
     })
+    wx.showToast({
+      title: '加入购物车',
+    })
     wx.setStorageSync('gloableData', gloableData)
   },
+  //进入购物车页面
   tocar() {
     wx.switchTab({
       url: '/pages/car/car',
@@ -38,15 +39,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // console.log();
-    let {
-      obj
-    } = this.data
+    let {obj} = this.data
     obj = JSON.parse(decodeURIComponent(options.obj))
     this.setData({
       obj
     })
-    console.log(obj);
   },
 
   /**
