@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>绘制一个圆形</title>
+	</head>
+	<body>
+		<!-- 绘制一个圆形的方法是 arc()
+        * arc(x ,y ,r, sAngle， eAngle, counterclockwise）
+        *
+        *  sAngle 开始角度
+        *  sAngle，结束角度
+        *  counterclockwise 绘制方向（true逆时针，false顺时针） 默认false
+     -->
+		<canvas
+			id="c"
+			width="300"
+			height="300"
+			style="border: 1px solid pink"
+		></canvas>
+	</body>
+	<script>
+		const cnv = document.getElementById('c');
+		const ctx = cnv.getContext('2d');
+		ctx.beginPath();
+		ctx.arc(150, 150, 80, 0, (360 * Math.PI) / 180);
+		ctx.closePath();  //不加是一个半圆
+		ctx.stroke();
+	</script>
+</html>

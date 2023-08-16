@@ -4,7 +4,7 @@
 <!-- 地址信息 -->
 <view class="address" wx:for="{{nav}}">
   <view class="box" >南山路店</view>
-  <view class="boxx">
+  <view class="boxx" bindtap="GotoMap">
     <view><van-icon name="award-o" />
     <text>{{item.address}}</text> </view>
     <text class="ccc">地图 > </text>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>用canvas绘制一条横线</title>
+	</head>
+	<body>
+		<!-- 创建一个canvas -->
+		<canvas
+			id="c"
+			width="300"
+			height="200"
+			style="border: 1px solid pink"
+		></canvas>
+	</body>
+	<script>
+		// 获取一个canvas对象 1. 一个横线
+		const cnv = document.getElementById('c')
+		// 获取canvas上下文环境对象
+		const ctx = cnv.getContext('2d')
+		//绘制图形
+		// ctx.moveTo(50,150) //坐标起点（x,y）
+		// ctx.lineTo(200,150) //坐标终点（x,y）
+		// ctx.stroke()
+
+		// 2.绘制三条折线图
+		// ctx.moveTo(50,200) //坐标起点（x,y）
+		// ctx.lineTo(100,50) //坐标终点（x,y）
+		// ctx.lineTo(200,200) //坐标终点（x,y）
+		// ctx.lineTo(250,50) //坐标终点（x,y）
+		// ctx.stroke()
+
+
+		// 3.绘制一个矩形
+		// 获取 canvas 元素
+		// const canvas = document.getElementById('c');
+		// const ctx = canvas.getContext('2d');
+
+		// // 设置矩形的属性
+		const x = 50;
+		const y = 50;
+		const width = 200;
+		const height = 100;
+		const color = 'blue';
+
+		// 绘制矩形
+		ctx.fillStyle = color; // 设置填充颜色
+		ctx.fillRect(x, y, width, height); // 绘制矩形
+	</script>
+</html>

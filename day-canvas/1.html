@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="300"></canvas>
+
+    <script>
+        // 获取 canvas 元素
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // 定义横线的属性
+        const padding = 20;  // 边距
+        const interval = 50;  // 横线之间的间隔
+        const lineWidth = 2;  // 横线的宽度
+
+        // 定义颜色数组，每个元素分别对应一条横线的颜色
+        const colors = ['red', 'green', 'blue', 'yellow'];
+
+        // 绘制多个横线
+        for (let i = 0; i < colors.length; i++) {
+            // 计算每条横线的 y 坐标
+            const y = padding + i * interval;
+
+            // 设置画笔颜色
+            ctx.strokeStyle = colors[i];
+
+            // 绘制横线
+            ctx.beginPath();
+            ctx.moveTo(padding, y);
+            ctx.lineTo(canvas.width - padding, y);
+            ctx.lineWidth = lineWidth;
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>

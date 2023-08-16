@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>矩形简单</title>
+	</head>
+	<body>
+		<canvas
+			id="c"
+			width="300"
+			height="200"
+			style="border: 1px solid orange"
+		></canvas>
+	</body>
+
+    <script>
+		const cnv = document.getElementById('c');
+		const ctx = cnv.getContext('2d');
+
+        //设置矩形边框颜色
+        ctx.strokeStyle = "pink"
+        ctx.lineWidth = 10  //设置边框宽度
+        ctx.strokeRect (50,50,200,100)  //矩形的四个点位置
+
+        ctx.fillStyle = 'yellow'
+        ctx.fillRect(50,50,200,100)
+
+    </script>
+</html>

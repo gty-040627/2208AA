@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="c" width="300" height="300" style="border: 1px solid #ccc;"></canvas>
+    <script>
+        const cnv = document.getElementById('c')
+        const cxt = cnv.getContext('2d')
+
+        cxt.font = '60px Arial'
+        cxt.strokeStyle = 'pink'
+
+         //文本填充
+        cxt.fillStyle = "yellow"
+        cxt.fillText('高甜媛',30,90) 
+       
+        cxt.strokeText('高甜媛',30,90)   
+        // strokeText 有四个参数 (1.text 文本 2.x轴 ，3.y轴  4.可选参数)
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>虚线</title>
+</head>
+<body>
+    <canvas id="c" width="300" height="300" style="border: 1px solid pink;"></canvas>
+    <script>
+        const cnv = document.getElementById('c')
+        const cxt = cnv.getContext('2d')
+        cxt.lineWidth =20
+        cxt.strokeStyle = 'pink'
+
+        // cxt.moveTo(50,50)
+        // cxt.lineTo(200,50)
+        // cxt.setLineDash([10]) // 只穿一个参数，实现与空白都是10px
+        // cxt.lineDashOffset= 10   //设置偏移量
+        // cxt.stroke()
+
+
+        // cxt.beginPath()
+        // cxt.moveTo(50,100)
+        // cxt.lineTo(200,100)
+        // cxt.setLineDash([10,20])   //只传2个参数，10为实线，20为空白
+        // cxt.stroke()
+
+        cxt.beginPath()
+        cxt.moveTo(50,150)
+        cxt.lineTo(200,150)
+        cxt.setLineDash([10,20,5])  ////只传3个参数
+        cxt.stroke()
+    </script>
+</body>
+</html>

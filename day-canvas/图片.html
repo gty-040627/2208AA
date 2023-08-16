@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片</title>
+</head>
+<body>
+    <canvas
+		id="c"
+		width="500"
+		height="500"
+		style="border: 1px solid #ccc"
+	></canvas>
+
+    <script>
+		const cnv = document.getElementById('c');
+		const cxt = cnv.getContext('2d');
+
+        //创建image对象
+        const image = new Image()
+
+        //引入图片
+        image.src = '../img/xin.webp'
+
+        //等待图片加载完毕
+        image.onload =()=>{
+            cxt.drawImage(image,30,30)
+        }
+    </script>
+</body>
+</html>

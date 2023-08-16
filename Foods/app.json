@@ -4,6 +4,7 @@
     "pages/car/car",
     "pages/cate/cate",
     "pages/detail/detail",
+    "pages/home/home",
     "pages/my/my"
   ],
   "window":{

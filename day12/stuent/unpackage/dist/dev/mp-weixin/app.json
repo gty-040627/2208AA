@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/read/read",
+    "pages/answer/answer",
+    "pages/my/my",
+    "pages/search/search",
+    "pages/search2/search2"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "在线教育",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#345dc2",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/tabber-icon/index.png",
+        "selectedIconPath": "/static/tabber-icon/index-active.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "分类",
+        "iconPath": "/static/tabber-icon/home.png",
+        "selectedIconPath": "/static/tabber-icon/home-active.png"
+      },
+      {
+        "pagePath": "pages/read/read",
+        "text": "阅读",
+        "iconPath": "/static/tabber-icon/read.png",
+        "selectedIconPath": "/static/tabber-icon/read-active.png"
+      },
+      {
+        "pagePath": "pages/answer/answer",
+        "text": "问答",
+        "iconPath": "/static/tabber-icon/question.png",
+        "selectedIconPath": "/static/tabber-icon/question-active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/static/tabber-icon/my.png",
+        "selectedIconPath": "/static/tabber-icon/my-active.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

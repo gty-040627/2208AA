@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拐角样式</title>
+</head>
+<body>
+    <canvas id="c" width="300" height="300" style="border: 1px solid pink;"></canvas>
+    <script>
+        const cnv = document.getElementById('c')
+        const cxt = cnv.getContext('2d')
+        cxt.lineWidth =20
+        cxt.beginPath()
+        cxt.moveTo(50,140)
+        cxt.lineTo(200,140)
+        cxt.lineTo(200,190)
+        cxt.lineJoin = 'round'   //设置拐角 线帽 默认尖角（ round 圆角 bevel 方形 ）
+        cxt.stroke()
+    </script>
+</body>
+</html>

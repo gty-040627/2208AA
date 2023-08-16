@@ -18,6 +18,12 @@ Page({
             url: '/pages/detail/detail?obj='+encodeURIComponent(JSON.stringify(item))
           })
   },
+  //跳转地图页面
+  GotoMap(){
+   wx.navigateTo({
+     url: '/pages/home/home',
+   })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

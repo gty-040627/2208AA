@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>水平对齐方式</title>
+	</head>
+	<body>
+		<canvas
+			id="c"
+			width="400"
+			height="300"
+			style="border: 1px solid #ccc"
+		></canvas>
+		<script>
+            // textAlign 水平对齐方式 有五个值   ---垂直是textBaseline对应的值是一样的
+            // ·start 默认 在指定横坐标开始
+            // ·end  在指定横坐标结束
+            // ·left  左对齐
+            // ·rigth  右对齐
+            // ·center  居中
+
+			const cnv = document.getElementById('c');
+			const cxt = cnv.getContext('2d');
+
+			cxt.moveTo(200, 0);
+			cxt.lineTo(200, 400);
+			cxt.strokeStyle = 'green';
+			cxt.stroke();
+
+			cxt.font = '30px Arial';
+
+			//横坐标开始对齐
+			cxt.textAlign = 'start'; //默认值
+			cxt.fillText('高甜媛 start', 200, 40);
+
+			//横坐标结束对齐
+			cxt.textAlign = 'end'; //结束对其
+			cxt.fillText('高甜媛 end', 200, 100);
+
+			//左对齐
+			cxt.textAlign = 'left'; //结束对其
+			cxt.fillText('高甜媛 left', 200, 160);
+
+			//右对齐
+			cxt.textAlign = 'right'; //结束对其
+			cxt.fillText('高甜媛 right', 200, 220);
+
+			//居中对齐
+			cxt.textAlign = 'center'; //结束对其
+			cxt.fillText('高甜媛 center', 200, 280);
+		</script>
+	</body>
+</html>

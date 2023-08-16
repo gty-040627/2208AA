@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "van-icon": "/wxcomponents/dist/icon/index",
+    "van-search": "/wxcomponents/dist/search/index",
+    "van-tab": "/wxcomponents/dist/tab/index",
+    "van-tabs": "/wxcomponents/dist/tabs/index",
+    "van-dropdown-menu": "/wxcomponents/dist/dropdown-menu/index",
+    "van-dropdown-item": "/wxcomponents/dist/dropdown-item/index"
+  }
+}

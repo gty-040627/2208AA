@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 150,
+  "usingComponents": {
+    "van-tab": "/wxcomponents/dist/tab/index",
+    "van-tabs": "/wxcomponents/dist/tabs/index",
+    "list1": "/components/List1/List1"
+  }
+}

@@ -33,15 +33,11 @@ Page({
   },
   //删除
   del(e) {
-    let {
-      gloableData,
-    } = this.data
+    let {gloableData, } = this.data
     gloableData.splice(e.currentTarget.dataset.index, 1)
-        
     wx.setStorageSync('gloableData', gloableData)
     this.setData({
       gloableData,
-     
     })
     this.computed()
   },
@@ -80,9 +76,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    let {
-      gloableData
-    } = this.data
+    let {  gloableData} = this.data
     gloableData = wx.getStorageSync('gloableData') || []
     this.setData({
       gloableData,
